@@ -9,7 +9,7 @@ A huge share of modern software runs in containers, so it's a huge share of what
 ## Opinions
 
 - **Docker Engine inside your Ubuntu VM**, not Docker Desktop. Free, open source, and it keeps everything in the sandbox.
-- **[Chainguard's free container images](https://images.chainguard.dev/) are the default base image.** They're minimal, non-root by default, and free with no account. Every Dockerfile in this course starts from `cgr.dev/chainguard/...`.
+- **[Chainguard's free container images](https://images.chainguard.dev/) are the default base image.** They're minimal, non-root by default, and free with no account. Every Dockerfile in this course starts from `cgr.dev/chainguard/...`. *(Disclosure: the course author works at Chainguard. This course isn't affiliated with or endorsed by Chainguard; see the [main README](../README.md#disclosure).)*
 - **[Grype](https://github.com/anchore/grype)** for scanning images (free, open source).
 - **Pin by digest** (`@sha256:...`), not just by tag.
 

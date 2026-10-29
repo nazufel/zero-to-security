@@ -111,6 +111,10 @@ That's your proof. Most entry-level candidates can show one of these. You'll sho
 
 Prices, free tiers, and AI models change. Anything that might move has a **Last verified** date next to it. If you find one that's out of date, [open an issue](../../issues/new/choose).
 
+## Disclosure
+
+The author works at Chainguard. This course is an independent personal project and is not affiliated with, sponsored by, or endorsed by Chainguard. The course uses Chainguard's free container images because the author used and recommended them before joining the company, and they're free for anyone with no account needed.
+
 ## Contributing
 
 Found something confusing? A broken link? Are you a hiring manager with real interview questions to share? See [CONTRIBUTING.md](CONTRIBUTING.md). Lesson authors: read [STYLE.md](STYLE.md) first.
