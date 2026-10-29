@@ -32,6 +32,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Hook (Claude Code)** | A script that runs automatically before or after Claude Code acts, and can block the action | 1, 8 |
 | **IaC (Infrastructure as Code)** | Defining cloud resources in code files instead of clicking in a console | 6 |
 | **IAM** | Identity and Access Management: AWS's system for who can do what | 7 |
+| **Image (container)** | A packaged template for containers: an app plus everything it needs. A container is a running copy of one. | 5 |
 | **Incident** | Something broken or under attack right now | 0, 9 |
 | **Journal** | Where systemd services on Linux write their logs. Read it with `journalctl`. | 2 |
 | **JSON** | A plain-text data format that almost every tool and API speaks. Looks like a Python dictionary. | 3 |
@@ -43,6 +44,8 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Managed settings** | An organization-wide Claude Code policy that individual users can't override | 1, 8 |
 | **MCP** | Model Context Protocol: a standard way to connect AI to tools and data | 1, 6 |
 | **MFA** | Multi-factor authentication: something you know plus something you have | 0, 7 |
+| **Minimal image** | A container image with only what the app needs to run, often with no shell or package manager | 5 |
+| **Multi-stage build** | A Dockerfile that builds in one image and copies only the result into a smaller one to ship | 5 |
 | **OIDC** | A login standard that lets systems like GitHub Actions get short-lived cloud credentials with no stored keys | 8 |
 | **OpenTofu** | A free, open-source tool for Infrastructure as Code | 6 |
 | **OWASP** | A nonprofit that publishes widely used security guidance, including the Top 10 lists | 1, 8 |
@@ -62,6 +65,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **SBOM** | Software Bill of Materials: a list of everything inside a piece of software | 5 |
 | **Security group** | A stateful firewall attached to an AWS resource | 6 |
 | **Service** | A program that runs in the background, like a web or SSH server. Managed with `systemctl`. | 2 |
+| **Signature (image)** | Proof of who built an image, checked with cosign against an identity you trust | 5 |
 | **Skill (Claude Code)** | Packaged instructions for a repeatable task, stored in a `SKILL.md` file | 1, 9 |
 | **Snapshot** | A saved state of a VM or disk that you can return to later | 2, 9 |
 | **SOC** | Security Operations Center: the team that watches for and responds to attacks | 0, 9 |
@@ -70,9 +74,11 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Subagent** | A helper AI agent with its own instructions and a limited set of tools, for one job | 1, 9 |
 | **Subnet** | A slice of a network's address range | 4 |
 | **sudo** | Runs one command as root. Who can use it is one of the most important questions on a server. | 2 |
+| **Tag (image)** | A movable, human-friendly label for an image, like `latest`. Unlike a digest, it can be repointed. | 5 |
 | **TCP / UDP** | The two ways to send data. TCP is reliable and ordered (web, SSH). UDP is fast with no guarantees (DNS, video). | 4 |
 | **Ticket** | A tracked record of a request or problem | 0 |
 | **TLS** | The encryption behind HTTPS. Also checks the site's certificate. | 4 |
 | **Virtual environment** | A private folder of Python packages for one project | 3 |
 | **VM (virtual machine)** | A whole computer running as software inside your real one | 2 |
+| **Volume** | A host folder or file mounted into a container. Mount read-only (`:ro`) unless it must write. | 5 |
 | **Zero trust** | Never trust a request because of where it comes from; verify every time | 8 |

@@ -2,8 +2,6 @@
 
 **Pillars:** 🪪 Identity · 🤖 AI · ☁️ Cloud
 
-> 🚧 **Outline.** Lessons are being written. The checklist and plan below are final.
-
 ## Why this module matters
 
 A huge share of modern software runs in containers, so it's a huge share of what you'll defend. Containers are also a box: a second way, after the VM, to limit what code (and AI) can reach.
@@ -28,24 +26,23 @@ A huge share of modern software runs in containers, so it's a huge share of what
 - [ ] You can verify an image's signature and download its SBOM with cosign
 - [ ] You can review a Claude-written Dockerfile for root users, shells, and unpinned bases
 
-## Lessons (planned)
+## Lessons
 
-1. **Why containers:** what they are, and how they differ from your VM
-2. **Running containers:** `run`, `ps`, `logs`, `exec`, `stop`, `rm`
-3. **Ports and volumes:** your networking skills, reused
-4. **Your first Dockerfile:** containerize `logslayer` on the standard `python` image
-5. **Switch to Chainguard:** a multi-stage build with `python:latest-dev` and `python:latest`
-6. **Scan it:** Grype the standard image and the Chainguard image, and compare
-7. **Pin by digest:** tags can move, digests can't
-8. **Verify before you trust:** cosign signatures and SBOMs. *(OWASP A03: Software Supply Chain Failures, A08: Software or Data Integrity Failures)*
-
-**Break it:** try `docker exec ... sh` on the Chainguard runtime image. It fails: there's no shell. If you can't get a shell, neither can an attacker.
+1. [Why containers](01-why-containers.md): what they are, how they differ from your VM, and why the `docker` group is root
+2. [Running containers](02-running-containers.md): `run`, `ps`, `logs`, `exec`, `stop`, `rm`
+3. [Ports and volumes](03-ports-and-volumes.md): your networking skills, reused, and how Docker goes around ufw
+4. [Your first Dockerfile](04-first-dockerfile.md): containerize `logslayer` on the standard `python` image
+5. [Switch to Chainguard](05-switch-to-chainguard.md): a multi-stage build with `python:latest-dev` and `python:latest`. *Break it:* try to get a shell. There isn't one. If you can't get a shell, neither can an attacker.
+6. [Scan it](06-scan-it.md): Grype the standard image and the Chainguard image, and compare
+7. [Pin by digest](07-pin-by-digest.md): tags can move, digests can't. With the Trivy case study.
+8. [Verify before you trust](08-verify-before-you-trust.md): cosign signatures and SBOMs. *(OWASP A03: Software Supply Chain Failures, A08: Software or Data Integrity Failures)*
 
 **Case study:** in March 2026, attackers used stolen credentials to publish malicious releases of the Trivy security scanner and repoint its GitHub Actions tags to credential-stealing malware. The security tool itself was the attack path. Teams that pinned by commit SHA weren't affected; teams that trusted tags had to hunt through their logs. ([Wiz](https://www.wiz.io/blog/trivy-compromised-teampcp-supply-chain-attack))
 
 ## Practice
 
-- **Project:** a hardened `logslayer` image in your portfolio: Chainguard base, multi-stage, non-root, pinned by digest, signature verified, with a README showing before/after scan results.
+- [Quiz](quiz.md)
+- [Project: a hardened `logslayer` image](project.md): Chainguard base, multi-stage, non-root, pinned by digest, signature verified, with a README showing before/after scan results
 
 ## Dig Deeper
 
