@@ -7,6 +7,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Agent (AI)** | An AI that can take actions, like running commands or editing files, not just answer questions | 1 |
 | **AssumeRole** | Temporarily taking on an IAM role's permissions | 7 |
 | **Blast radius** | How much damage a mistake or compromise can do. Least privilege shrinks it. | 1, 7 |
+| **Certificate** | A file that proves a site's identity, vouched for by a certificate authority. Browsers warn when one is expired, untrusted, or for a different name. | 4 |
 | **CIDR** | Notation for a range of IP addresses, like `10.0.0.0/24` | 4 |
 | **CLAUDE.md** | A project file of instructions Claude Code reads at the start of every session. Guidance, not enforcement. | 1, 3 |
 | **CloudTrail** | AWS's audit log: who did what, when, from where | 9 |
@@ -14,15 +15,20 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Commit** | A saved snapshot of changes in Git | 0 |
 | **Container** | A packaged app with just what it needs to run, isolated from the rest of the system | 5 |
 | **CVE** | A public ID for a known vulnerability | 5 |
+| **Default gateway** | The router a machine sends traffic to when the destination isn't on its own subnet | 4 |
 | **Defense in depth** | Several layers of controls, so when one fails another still limits the damage | 1, 8 |
 | **Dependency** | A package your code needs. Transitive dependencies are the packages your dependencies need. | 3, 5 |
+| **DHCP** | The service that hands a device its IP address, gateway, and DNS servers when it joins a network | 4 |
 | **Digest** | A unique fingerprint of a container image. Unlike a tag, it can't be moved. | 5 |
 | **DNS** | The system that turns names like `example.com` into IP addresses | 4 |
+| **Encoding** | Changing data's format, like base64. Reversible by anyone. Not security. | 1, 4 |
+| **Encryption** | Scrambling data so only someone with the key can read it | 4, 8 |
 | **Excessive agency** | Giving an AI more power than its task needs. An OWASP LLM Top 10 risk. | 1, 8 |
 | **Extended thinking** | A mode where an AI model reasons step by step before answering. Slower, but better on hard, multi-step problems. | 1 |
 | **Fail open / fail closed** | What a security check does when it hits an error: allow (open, dangerous) or deny (closed, safe) | 3 |
 | **Firewall** | Software that decides which network connections are allowed in or out. Ubuntu's is `ufw`. | 2, 4 |
 | **Hallucination** | When AI states something false with confidence | 1 |
+| **Hash** | A one-way fingerprint of data. Used to store passwords and to check files haven't changed. | 4 |
 | **Hook (Claude Code)** | A script that runs automatically before or after Claude Code acts, and can block the action | 1, 8 |
 | **IaC (Infrastructure as Code)** | Defining cloud resources in code files instead of clicking in a console | 6 |
 | **IAM** | Identity and Access Management: AWS's system for who can do what | 7 |
@@ -41,6 +47,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **OpenTofu** | A free, open-source tool for Infrastructure as Code | 6 |
 | **OWASP** | A nonprofit that publishes widely used security guidance, including the Top 10 lists | 1, 8 |
 | **Package manager** | A tool that downloads, installs, and updates software from a trusted source, like `apt` on Ubuntu | 2, 3 |
+| **Packet capture** | A recording of network traffic, made with tools like `tcpdump` and read in Wireshark | 4, 9 |
 | **Phishing** | A fake message designed to trick someone into clicking, paying, or giving up a password | 9 |
 | **Pipe** | The `\|` character: sends one command's output into the next command | 2 |
 | **Port** | A numbered door on a computer that a network service listens on, like 22 for SSH | 4 |
@@ -51,6 +58,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Regression test** | A test for a bug you already fixed, so it can't quietly come back | 3 |
 | **Role (IAM)** | An identity with no permanent password or keys. You assume it to get temporary credentials. | 7 |
 | **Root** | The all-powerful admin account on Linux. Ignores file permissions. | 2 |
+| **Salt** | A random value added to each password before hashing, so identical passwords get different hashes | 4 |
 | **SBOM** | Software Bill of Materials: a list of everything inside a piece of software | 5 |
 | **Security group** | A stateful firewall attached to an AWS resource | 6 |
 | **Service** | A program that runs in the background, like a web or SSH server. Managed with `systemctl`. | 2 |
@@ -62,7 +70,9 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Subagent** | A helper AI agent with its own instructions and a limited set of tools, for one job | 1, 9 |
 | **Subnet** | A slice of a network's address range | 4 |
 | **sudo** | Runs one command as root. Who can use it is one of the most important questions on a server. | 2 |
+| **TCP / UDP** | The two ways to send data. TCP is reliable and ordered (web, SSH). UDP is fast with no guarantees (DNS, video). | 4 |
 | **Ticket** | A tracked record of a request or problem | 0 |
+| **TLS** | The encryption behind HTTPS. Also checks the site's certificate. | 4 |
 | **Virtual environment** | A private folder of Python packages for one project | 3 |
 | **VM (virtual machine)** | A whole computer running as software inside your real one | 2 |
 | **Zero trust** | Never trust a request because of where it comes from; verify every time | 8 |
