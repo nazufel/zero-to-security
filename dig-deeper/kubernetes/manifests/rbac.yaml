@@ -1,0 +1,59 @@
+# Who can do what in the logslayer namespace.
+
+# A person who can read pods and their logs, nothing else
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: log-reader
+  namespace: logslayer
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "pods/log"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: alice-log-reader
+  namespace: logslayer
+subjects:
+  - kind: User
+    name: alice
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: log-reader
+  apiGroup: rbac.authorization.k8s.io
+---
+# A service account for a program that needs to read one ConfigMap
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: reporter
+  namespace: logslayer
+automountServiceAccountToken: false
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: read-auth-log
+  namespace: logslayer
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    resourceNames: ["auth-log"]
+    verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: reporter-read-auth-log
+  namespace: logslayer
+subjects:
+  - kind: ServiceAccount
+    name: reporter
+    namespace: logslayer
+roleRef:
+  kind: Role
+  name: read-auth-log
+  apiGroup: rbac.authorization.k8s.io

@@ -21,4 +21,4 @@ When you list Dig Deeper work on your resume, be honest: "hands-on lab experienc
 | Endpoint security and EDR concepts | Incident Response | Reading |
 | Windows event logs for SOC | Incident Response | Sample logs |
 
-Only Kubernetes has a page so far. The rest are coming.
+[Kubernetes](kubernetes/) is a full track. The rest are coming.

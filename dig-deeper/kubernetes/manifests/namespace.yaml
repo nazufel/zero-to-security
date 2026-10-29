@@ -1,0 +1,9 @@
+# The namespace for everything in this track. The labels turn on Pod Security
+# Admission at the "restricted" level: Kubernetes rejects pods that aren't locked down.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: logslayer
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted

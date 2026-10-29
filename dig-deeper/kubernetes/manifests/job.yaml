@@ -1,0 +1,54 @@
+# Run logslayer once, as a batch job, on a log file mounted read-only from a ConfigMap.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: logslayer
+  namespace: logslayer
+automountServiceAccountToken: false # logslayer never talks to the Kubernetes API
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: logslayer-report
+  namespace: logslayer
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 3600
+  template:
+    metadata:
+      labels:
+        app: logslayer
+    spec:
+      serviceAccountName: logslayer
+      automountServiceAccountToken: false
+      restartPolicy: Never
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: logslayer
+          image: logslayer:chainguard
+          imagePullPolicy: IfNotPresent
+          args: ["/logs/auth.log"]
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          volumeMounts:
+            - name: logs
+              mountPath: /logs
+              readOnly: true
+      volumes:
+        - name: logs
+          configMap:
+            name: auth-log

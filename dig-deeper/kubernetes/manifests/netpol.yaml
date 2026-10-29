@@ -1,0 +1,29 @@
+# Default deny: no pod in the namespace accepts traffic unless a policy allows it.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: logslayer
+spec:
+  podSelector: {}
+  policyTypes: ["Ingress"]
+---
+# Then allow exactly one path: pods labeled role=client may reach the web pods on 8080.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: web-from-clients
+  namespace: logslayer
+spec:
+  podSelector:
+    matchLabels:
+      app: web
+  policyTypes: ["Ingress"]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              role: client
+      ports:
+        - port: 8080
+          protocol: TCP
