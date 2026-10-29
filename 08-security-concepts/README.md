@@ -2,8 +2,6 @@
 
 **Pillars:** ☁️ Cloud · 🪪 Identity · 🤖 AI
 
-> 🚧 **Outline.** Lessons are being written. The checklist and plan below are final.
-
 ## Why this module matters
 
 You've built an app in the cloud and designed who can touch it. Now you secure it end to end, including the AI that helped build it and the pipeline that ships it. This is where the three pillars meet.
@@ -21,22 +19,22 @@ You've built an app in the cloud and designed who can touch it. Now you secure i
 - [ ] You can write a Claude Code hook and a managed-settings policy that keep AI in a box
 - [ ] You can build a CI/CD pipeline that tests, scans, and deploys with no stored AWS keys
 
-## Lessons (planned)
+## Lessons
 
-1. **Foundations:** CIA triad, defense in depth, authentication vs. authorization, MFA
-2. **Least privilege:** tighten the notes app's Lambda role
-3. **Zero trust:** never trust, always verify, applied to your app
-4. **Network segmentation:** private subnets and security groups
-5. **Encryption at rest and in transit:** KMS and TLS
-6. **Secrets management:** finish removing every hard-coded secret
-7. **Closing port 22:** SSM Session Manager instead of SSH
-8. **Vulnerability and patch management:** acting on your scan results
-9. **Threat modeling with STRIDE:** on your own architecture diagram. Then have Claude threat-model it, and critique Claude's version.
-10. **The OWASP Top 10:** you've already defended against most of it (see the map below)
-11. **Securing AI:** the OWASP Top 10 for LLM Applications, applied to your own setup
-12. **Keeping AI in a box:** Claude Code hooks (block risky commands), and an organization-wide managed-settings policy (allowed tools, blocked commands)
-13. **A secure delivery pipeline:** GitHub Actions (free on public repos), deploying to AWS with OIDC, no stored keys
-14. **Scanning infrastructure code:** catch misconfigurations before `tofu apply`
+1. [Foundations](01-foundations.md): CIA triad, defense in depth, authentication vs. authorization, MFA
+2. [Least privilege](02-least-privilege.md): tighten the notes app's Lambda roles to what the code uses
+3. [Zero trust](03-zero-trust.md): never trust, always verify. The delete route moves from a shared token to signed requests.
+4. [Network segmentation](04-network-segmentation.md): tiers chained by security groups, and identity segmentation for serverless
+5. [Encryption at rest and in transit](05-encryption.md): KMS key types, and a TLS-only bucket
+6. [Secrets management](06-secrets-management.md): finish removing every secret, and scan history with gitleaks
+7. [Closing port 22](07-closing-port-22.md): SSM Session Manager instead of SSH
+8. [Vulnerability and patch management](08-vulnerability-management.md): CVSS, EPSS, and KEV; Dependabot for pinned dependencies
+9. [Threat modeling with STRIDE](09-threat-modeling.md): on your own architecture diagram. Then have Claude threat-model it, and critique Claude's version.
+10. [The OWASP Top 10](10-owasp-top-10.md): you've already defended against most of it, with evidence for each
+11. [Securing AI](11-securing-ai.md): the OWASP Top 10 for LLM Applications, applied to your own setup, with a planted prompt injection
+12. [Keeping AI in a box](12-ai-in-a-box.md): Claude Code hooks (block risky commands), and an organization-wide managed-settings policy
+13. [A secure delivery pipeline](13-secure-pipeline.md): GitHub Actions (free on public repos), deploying to AWS with OIDC, no stored keys
+14. [Scanning infrastructure code](14-scanning-infrastructure-code.md): catch misconfigurations before `tofu apply`, and triage the findings
 
 ## The OWASP Top 10:2025, mapped to this course
 
@@ -70,18 +68,22 @@ You've built an app in the cloud and designed who can touch it. Now you secure i
 
 ## The secure pipeline
 
-1. Lint and test `logslayer`
-2. Build the Chainguard image and scan it with Grype
-3. `tofu plan`, scan the infrastructure code, then require a human approval
-4. `tofu apply` through GitHub's OIDC login: no AWS keys stored anywhere
-5. Every third-party action pinned by commit SHA (remember Trivy)
+Built in [lessons 13](13-secure-pipeline.md) and [14](14-scanning-infrastructure-code.md):
+
+1. Test `logslayer`
+2. Scan for secrets with gitleaks, build the Chainguard image, and scan it with Grype
+3. Scan the infrastructure code with Checkov
+4. `tofu plan` as a read-only role, then require a human approval
+5. `tofu apply` through GitHub's OIDC login: no AWS keys stored anywhere
+6. Every third-party action pinned by commit SHA (remember Trivy)
 
 **Break it:** commit a fake secret and an over-permissive IAM policy. Watch the pipeline catch both.
 
 ## Practice
 
-- **Challenge:** [flaws.cloud](http://flaws.cloud/)
-- **Project:** a security review of the notes app: findings, fixes, and a before/after diagram, plus your managed-settings policy and the working pipeline
+- [Quiz](quiz.md), with the challenge: [flaws.cloud](http://flaws.cloud/)
+- [Project: a security review of the notes app](project.md): findings, fixes, and a before/after diagram, plus your managed-settings policy and the working pipeline
+- Reference files: [the workflow](reference/notes-app.yml), [the hook](reference/block-risky.sh), and [the hardened notes app](../06-cloud-aws/reference/notes-app/)
 
 ## Dig Deeper
 

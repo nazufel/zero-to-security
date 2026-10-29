@@ -17,10 +17,6 @@ resource "aws_iam_role" "notes" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "notes_logs" {
-  role       = aws_iam_role.notes.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-}
 
 resource "aws_iam_role_policy" "notes" {
   name = "notes-app-access"
@@ -31,13 +27,13 @@ resource "aws_iam_role_policy" "notes" {
     Statement = [
       {
         Effect   = "Allow"
-        Action   = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem", "dynamodb:Scan"]
+        Action   = ["dynamodb:PutItem", "dynamodb:DeleteItem", "dynamodb:Scan"]
         Resource = aws_dynamodb_table.notes.arn
       },
       {
         Effect   = "Allow"
-        Action   = "ssm:GetParameter"
-        Resource = "arn:aws:ssm:${var.region}:${data.aws_caller_identity.current.account_id}:parameter${var.admin_token_param}"
+        Action   = ["logs:CreateLogStream", "logs:PutLogEvents"]
+        Resource = "${aws_cloudwatch_log_group.notes.arn}:*"
       },
       {
         Effect   = "Allow"
@@ -64,9 +60,8 @@ resource "aws_lambda_function" "notes" {
 
   environment {
     variables = {
-      TABLE_NAME  = aws_dynamodb_table.notes.name
-      TOKEN_PARAM = var.admin_token_param
-      QUEUE_URL   = aws_sqs_queue.events.url
+      TABLE_NAME = aws_dynamodb_table.notes.name
+      QUEUE_URL  = aws_sqs_queue.events.url
     }
   }
 

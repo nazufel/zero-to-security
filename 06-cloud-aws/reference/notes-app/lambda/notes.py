@@ -1,6 +1,5 @@
 """notes: a tiny notes API, run by AWS Lambda behind API Gateway."""
 
-import hmac
 import json
 import os
 import time
@@ -9,19 +8,7 @@ import uuid
 import boto3
 
 table = boto3.resource("dynamodb").Table(os.environ["TABLE_NAME"])
-ssm = boto3.client("ssm")
 sqs = boto3.client("sqs")
-
-_admin_token = None
-
-
-def admin_token():
-    """Read the admin token from Parameter Store once, then reuse it."""
-    global _admin_token
-    if _admin_token is None:
-        response = ssm.get_parameter(Name=os.environ["TOKEN_PARAM"], WithDecryption=True)
-        _admin_token = response["Parameter"]["Value"]
-    return _admin_token
 
 
 def respond(status, body):
@@ -56,11 +43,15 @@ def create_note(event):
 
 
 def delete_note(event):
-    given = event.get("headers", {}).get("x-admin-token", "")
-    if not hmac.compare_digest(given, admin_token()):
+    # API Gateway only lets signed (AWS_IAM) requests reach this route. Check anyway:
+    # if the route is ever misconfigured, fail closed instead of open.
+    caller = event.get("requestContext", {}).get("authorizer", {}).get("iam", {}).get("userArn")
+    if not caller:
         return respond(403, {"error": "forbidden"})
-    table.delete_item(Key={"id": event["pathParameters"]["id"]})
-    return respond(200, {"deleted": event["pathParameters"]["id"]})
+    note_id = event["pathParameters"]["id"]
+    table.delete_item(Key={"id": note_id})
+    print(json.dumps({"deleted": note_id, "by": caller}))
+    return respond(200, {"deleted": note_id})
 
 
 def handler(event, context):

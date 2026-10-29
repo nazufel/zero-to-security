@@ -33,6 +33,11 @@ resource "aws_iam_role_policy" "lab" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "lab_ssm" {
+  role       = aws_iam_role.lab.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
+
 resource "aws_iam_instance_profile" "lab" {
   name = "${var.name}-lab-server"
   role = aws_iam_role.lab.name

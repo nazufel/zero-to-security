@@ -10,6 +10,6 @@ output "files_bucket" {
   value = aws_s3_bucket.files.bucket
 }
 
-output "lab_ip" {
-  value = aws_instance.lab.public_ip
+output "lab_instance_id" {
+  value = aws_instance.lab.id
 }

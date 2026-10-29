@@ -13,6 +13,8 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Authorization** | Deciding what you're allowed to do (policies, groups). Fails with 403. | 7 |
 | **Blast radius** | How much damage a mistake or compromise can do. Least privilege shrinks it. | 1, 7 |
 | **Certificate** | A file that proves a site's identity, vouched for by a certificate authority. Browsers warn when one is expired, untrusted, or for a different name. | 4 |
+| **CI/CD** | Continuous integration and delivery: a pipeline that tests, scans, and deploys every change automatically | 8 |
+| **CIA triad** | Confidentiality, integrity, and availability: the three things security protects | 8 |
 | **CIDR** | Notation for a range of IP addresses, like `10.0.0.0/24` | 4 |
 | **CLAUDE.md** | A project file of instructions Claude Code reads at the start of every session. Guidance, not enforcement. | 1, 3 |
 | **CloudFront** | AWS's content delivery network. Serves a private bucket's files publicly over HTTPS. | 6 |
@@ -23,6 +25,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Container** | A packaged app with just what it needs to run, isolated from the rest of the system | 5 |
 | **CORS** | Browser rules for which websites may call an API on another domain | 6 |
 | **CVE** | A public ID for a known vulnerability | 5 |
+| **CVSS** | A 0 to 10 score for how severe a vulnerability could be | 5, 8 |
 | **Data event** | A CloudTrail record of reading or writing data, like an S3 object. Not logged by default. | 6, 9 |
 | **Default gateway** | The router a machine sends traffic to when the destination isn't on its own subnet | 4 |
 | **Defense in depth** | Several layers of controls, so when one fails another still limits the damage | 1, 8 |
@@ -34,6 +37,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **EC2** | AWS's virtual servers | 6 |
 | **Encoding** | Changing data's format, like base64. Reversible by anyone. Not security. | 1, 4 |
 | **Encryption** | Scrambling data so only someone with the key can read it | 4, 8 |
+| **EPSS** | The probability a vulnerability will be exploited in the next 30 days | 8 |
 | **Excessive agency** | Giving an AI more power than its task needs. An OWASP LLM Top 10 risk. | 1, 8 |
 | **Explicit deny** | A Deny statement in a policy. Always wins over any Allow. | 7 |
 | **Extended thinking** | A mode where an AI model reasons step by step before answering. Slower, but better on hard, multi-step problems. | 1 |
@@ -52,7 +56,9 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Instance profile** | The wrapper that delivers an IAM role to an EC2 instance | 7 |
 | **Journal** | Where systemd services on Linux write their logs. Read it with `journalctl`. | 2 |
 | **JSON** | A plain-text data format that almost every tool and API speaks. Looks like a Python dictionary. | 3 |
+| **KEV** | CISA's Known Exploited Vulnerabilities list: vulnerabilities attackers are using now | 8 |
 | **Key pair (SSH)** | A private key that stays with you and a public key you put on servers. Logs you in with nothing guessable sent over the network. | 2 |
+| **KMS** | AWS Key Management Service: creates and controls the keys that encrypt your data | 8 |
 | **Knowledge cutoff** | The date an AI model's training data ends. It can't know later events unless it searches. | 1 |
 | **Lambda** | AWS's service for running code on request, with no server to manage | 6 |
 | **Least privilege** | Giving every person and program only the access it needs, nothing more | 7, 8 |
@@ -70,6 +76,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Package manager** | A tool that downloads, installs, and updates software from a trusted source, like `apt` on Ubuntu | 2, 3 |
 | **Packet capture** | A recording of network traffic, made with tools like `tcpdump` and read in Wireshark | 4, 9 |
 | **Parameter Store** | An AWS Systems Manager feature for storing settings and secrets (as encrypted SecureStrings) | 6 |
+| **Passkey** | A phishing-resistant login that checks the real website's address before signing in | 8 |
 | **Permissions boundary** | A cap on the most a user or role can ever be allowed, whatever its other policies say | 7 |
 | **Phishing** | A fake message designed to trick someone into clicking, paying, or giving up a password | 9 |
 | **Pipe** | The `\|` character: sends one command's output into the next command | 2 |
@@ -87,6 +94,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Security group** | A stateful firewall attached to an AWS resource | 6 |
 | **Service** | A program that runs in the background, like a web or SSH server. Managed with `systemctl`. | 2 |
 | **Service account** | An identity for software, not a person. In AWS, it should be a role. | 7 |
+| **Session Manager** | AWS's way to get a shell on a server with no inbound ports, controlled by IAM and logged | 8 |
 | **Shared responsibility model** | AWS secures the cloud itself; you secure what you put in it and how you configure it | 6 |
 | **Signature (image)** | Proof of who built an image, checked with cosign against an identity you trust | 5 |
 | **Skill (Claude Code)** | Packaged instructions for a repeatable task, stored in a `SKILL.md` file | 1, 9 |
@@ -96,13 +104,16 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **SSH** | Secure Shell: an encrypted way to log in to a remote machine | 2 |
 | **Standard library** | The modules that come with Python, like `json` and `ipaddress`. Nothing extra to install or trust. | 3 |
 | **State (OpenTofu)** | OpenTofu's record of what it manages. Can contain secrets. Never commit it. | 6 |
+| **STRIDE** | A threat-modeling checklist: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege | 8 |
 | **Subagent** | A helper AI agent with its own instructions and a limited set of tools, for one job | 1, 9 |
 | **Subnet** | A slice of a network's address range | 4 |
 | **sudo** | Runs one command as root. Who can use it is one of the most important questions on a server. | 2 |
 | **Tag (image)** | A movable, human-friendly label for an image, like `latest`. Unlike a digest, it can be repointed. | 5 |
 | **TCP / UDP** | The two ways to send data. TCP is reliable and ordered (web, SSH). UDP is fast with no guarantees (DNS, video). | 4 |
+| **Threat model** | A structured look at what could go wrong in a system, and what stops it | 8 |
 | **Ticket** | A tracked record of a request or problem | 0 |
 | **TLS** | The encryption behind HTTPS. Also checks the site's certificate. | 4 |
+| **Trust boundary** | Where data crosses from a less-trusted part of a system to a more-trusted one | 8 |
 | **Trust policy** | The policy on a role that says who can assume it | 7 |
 | **Virtual environment** | A private folder of Python packages for one project | 3 |
 | **VM (virtual machine)** | A whole computer running as software inside your real one | 2 |

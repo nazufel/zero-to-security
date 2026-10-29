@@ -1,0 +1,42 @@
+# Checkov findings we've reviewed and accepted, with the reason for each.
+# Anything not listed here fails the pipeline. Review this list every few months.
+framework:
+  - terraform
+compact: true
+quiet: true
+skip-check:
+  # --- Costs money, and the course stays at $0 (decision, not oversight) ---
+  - CKV_AWS_119   # DynamoDB customer-managed KMS key: AWS-owned encryption is on; a CMK costs ~$1/month (Module 8, lesson 5)
+  - CKV_AWS_145   # S3 customer-managed KMS key: SSE-S3 is on by default; same reason
+  - CKV_AWS_158   # Log group KMS key: same reason
+  - CKV_AWS_68    # CloudFront WAF: about $5+/month; throttling on the API is our cost and abuse control
+  - CKV2_AWS_47   # WAF managed rules (Log4j): requires WAF, see above
+  - CKV_AWS_126   # EC2 detailed monitoring: paid; basic monitoring is enough for a lab server
+  - CKV_AWS_144   # S3 cross-region replication: doubles storage cost; versioning covers our recovery needs
+  - CKV_AWS_310   # CloudFront origin failover: needs a second origin; not needed for a demo site
+  - CKV_AWS_338   # Keep logs 1 year: lab logs are kept 14 days to stay free
+  # --- Needs things a learner account doesn't have ---
+  - CKV2_AWS_42   # Custom TLS certificate: needs a domain name you own
+  - CKV_AWS_174   # TLS 1.2 minimum on CloudFront: only settable with a custom certificate (see above)
+  - CKV_AWS_273   # SSO instead of IAM users: needs AWS Organizations, which ends Free plan credits; practice users have no credentials
+  - CKV_AWS_115   # Lambda reserved concurrency: new accounts have too low a concurrency quota to reserve any; API throttling caps load instead
+  # --- Deliberate design decisions ---
+  - CKV_AWS_309   # GET/POST /notes have no authorizer: a public demo, throttled; DELETE requires AWS_IAM (Module 8, lesson 3)
+  - CKV_AWS_117   # Lambda outside a VPC: it reaches only AWS APIs, and IAM is its segmentation; a VPC would need a paid NAT gateway or endpoints
+  - CKV_AWS_116   # Lambda dead-letter queue: the API function is invoked synchronously, so a DLQ never applies; the audit function's retries come from SQS
+  - CKV_AWS_130   # Public subnet assigns public IPs: the lab server needs outbound internet and there's no NAT gateway (cost); it has no inbound rules at all
+  - CKV2_AWS_5    # Security groups not attached: the tier groups demonstrate segmentation (Module 8, lesson 4)
+  - CKV_AWS_173   # Lambda environment variables with a CMK: they hold only resource names, never secrets
+  - CKV_AWS_272   # Lambda code signing: worth adding at work; out of scope for this course
+  - CKV_AWS_374   # CloudFront geo restriction: no business reason to block countries
+  - CKV2_AWS_61   # S3 lifecycle rules: the files bucket has one; the site bucket holds one small file
+  - CKV2_AWS_62   # S3 event notifications: nothing needs to react to uploads
+  - CKV_AWS_274   # AdministratorAccess on the deploy role: deploying creates IAM roles, so it needs broad rights; it's limited to one repo's production environment, which requires a human approval
+  # --- False positive (we checked) ---
+  - CKV2_AWS_32   # Response headers policy: attached, using AWS's managed SecurityHeadersPolicy by ID; Checkov only recognizes a policy resource
+  # --- Coming in Module 9 (Incident Response) ---
+  - CKV2_AWS_11   # VPC flow logs: Module 9, lesson 5
+  - CKV_AWS_50    # X-Ray tracing: Module 9, lesson 6
+  - CKV_AWS_18    # S3 access logging: Module 9
+  - CKV_AWS_76    # API Gateway access logging: Module 9, lesson 4
+  - CKV_AWS_86    # CloudFront access logging: Module 9

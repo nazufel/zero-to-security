@@ -16,12 +16,22 @@ resource "aws_apigatewayv2_integration" "notes" {
   payload_format_version = "2.0"
 }
 
-resource "aws_apigatewayv2_route" "notes" {
-  for_each = toset(["GET /notes", "POST /notes", "DELETE /notes/{id}"])
+locals {
+  # Route => who may call it. AWS_IAM means: a signed request from an identity allowed to invoke it.
+  routes = {
+    "GET /notes"         = "NONE"
+    "POST /notes"        = "NONE"
+    "DELETE /notes/{id}" = "AWS_IAM"
+  }
+}
 
-  api_id    = aws_apigatewayv2_api.notes.id
-  route_key = each.value
-  target    = "integrations/${aws_apigatewayv2_integration.notes.id}"
+resource "aws_apigatewayv2_route" "notes" {
+  for_each = local.routes
+
+  api_id             = aws_apigatewayv2_api.notes.id
+  route_key          = each.key
+  authorization_type = each.value
+  target             = "integrations/${aws_apigatewayv2_integration.notes.id}"
 }
 
 resource "aws_apigatewayv2_stage" "default" {

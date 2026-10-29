@@ -2,29 +2,24 @@ data "aws_ssm_parameter" "ubuntu" {
   name = "/aws/service/canonical/ubuntu/server/26.04/stable/current/amd64/hvm/ebs-gp3/ami-id"
 }
 
-resource "aws_key_pair" "lab" {
-  key_name   = "${var.name}-lab"
-  public_key = file(pathexpand(var.ssh_public_key_path))
-}
-
-resource "aws_security_group" "ssh" {
-  name        = "${var.name}-ssh"
-  description = "SSH from my IP only"
+resource "aws_security_group" "lab" {
+  name        = "${var.name}-lab"
+  description = "No inbound at all: admin access is through SSM Session Manager"
   vpc_id      = aws_vpc.lab.id
 
-  ingress {
-    description = "SSH from my IP"
-    from_port   = 22
-    to_port     = 22
+  egress {
+    description = "HTTPS out: Session Manager, AWS APIs, package updates"
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["${var.my_ip}/32"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
-    description = "All outbound, for updates"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+    description = "HTTP out: Ubuntu package mirrors"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
@@ -32,10 +27,10 @@ resource "aws_security_group" "ssh" {
 resource "aws_instance" "lab" {
   ami                    = data.aws_ssm_parameter.ubuntu.value
   instance_type          = "t3.micro"
-  key_name               = aws_key_pair.lab.key_name
   subnet_id              = aws_subnet.public.id
   iam_instance_profile   = aws_iam_instance_profile.lab.name
-  vpc_security_group_ids = [aws_security_group.ssh.id]
+  vpc_security_group_ids = [aws_security_group.lab.id]
+  ebs_optimized          = true
 
   metadata_options {
     http_tokens = "required" # IMDSv2 only

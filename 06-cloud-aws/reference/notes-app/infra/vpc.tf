@@ -42,24 +42,15 @@ resource "aws_network_acl" "public" {
   vpc_id     = aws_vpc.lab.id
   subnet_ids = [aws_subnet.public.id]
 
-  # SSH in, from you only
-  ingress {
-    rule_no    = 100
-    protocol   = "tcp"
-    action     = "allow"
-    cidr_block = "${var.my_ip}/32"
-    from_port  = 22
-    to_port    = 22
-  }
-
   # Replies to connections the instance started (updates, downloads).
-  # NACLs are stateless, so return traffic needs its own rule.
+  # NACLs are stateless, so return traffic needs its own rule. Linux uses
+  # ephemeral ports 32768-60999; starting at 1024 would also let in RDP (3389).
   ingress {
     rule_no    = 200
     protocol   = "tcp"
     action     = "allow"
     cidr_block = "0.0.0.0/0"
-    from_port  = 1024
+    from_port  = 32768
     to_port    = 65535
   }
 
@@ -71,4 +62,9 @@ resource "aws_network_acl" "public" {
     from_port  = 0
     to_port    = 0
   }
+}
+
+# Lock down the VPC's default security group, so nothing can use it by accident
+resource "aws_default_security_group" "lab" {
+  vpc_id = aws_vpc.lab.id
 }
