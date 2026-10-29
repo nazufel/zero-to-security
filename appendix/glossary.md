@@ -10,14 +10,17 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **CIDR** | Notation for a range of IP addresses, like `10.0.0.0/24` | 4 |
 | **CLAUDE.md** | A project file of instructions Claude Code reads at the start of every session. Guidance, not enforcement. | 1, 3 |
 | **CloudTrail** | AWS's audit log: who did what, when, from where | 9 |
+| **Command injection** | When input is run as part of a shell command, letting an attacker run their own commands. Prevented by passing arguments as a list. | 3 |
 | **Commit** | A saved snapshot of changes in Git | 0 |
 | **Container** | A packaged app with just what it needs to run, isolated from the rest of the system | 5 |
 | **CVE** | A public ID for a known vulnerability | 5 |
 | **Defense in depth** | Several layers of controls, so when one fails another still limits the damage | 1, 8 |
+| **Dependency** | A package your code needs. Transitive dependencies are the packages your dependencies need. | 3, 5 |
 | **Digest** | A unique fingerprint of a container image. Unlike a tag, it can't be moved. | 5 |
 | **DNS** | The system that turns names like `example.com` into IP addresses | 4 |
 | **Excessive agency** | Giving an AI more power than its task needs. An OWASP LLM Top 10 risk. | 1, 8 |
 | **Extended thinking** | A mode where an AI model reasons step by step before answering. Slower, but better on hard, multi-step problems. | 1 |
+| **Fail open / fail closed** | What a security check does when it hits an error: allow (open, dangerous) or deny (closed, safe) | 3 |
 | **Firewall** | Software that decides which network connections are allowed in or out. Ubuntu's is `ufw`. | 2, 4 |
 | **Hallucination** | When AI states something false with confidence | 1 |
 | **Hook (Claude Code)** | A script that runs automatically before or after Claude Code acts, and can block the action | 1, 8 |
@@ -25,10 +28,12 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **IAM** | Identity and Access Management: AWS's system for who can do what | 7 |
 | **Incident** | Something broken or under attack right now | 0, 9 |
 | **Journal** | Where systemd services on Linux write their logs. Read it with `journalctl`. | 2 |
+| **JSON** | A plain-text data format that almost every tool and API speaks. Looks like a Python dictionary. | 3 |
 | **Key pair (SSH)** | A private key that stays with you and a public key you put on servers. Logs you in with nothing guessable sent over the network. | 2 |
 | **Knowledge cutoff** | The date an AI model's training data ends. It can't know later events unless it searches. | 1 |
 | **Least privilege** | Giving every person and program only the access it needs, nothing more | 7, 8 |
 | **LLM** | Large language model, the kind of AI behind Claude | 1 |
+| **Lockfile** | A file, like `uv.lock`, that pins the exact version and hash of every package so every install is identical | 3, 5 |
 | **Managed settings** | An organization-wide Claude Code policy that individual users can't override | 1, 8 |
 | **MCP** | Model Context Protocol: a standard way to connect AI to tools and data | 1, 6 |
 | **MFA** | Multi-factor authentication: something you know plus something you have | 0, 7 |
@@ -43,6 +48,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Principal** | Anyone or anything that can make a request in AWS: a user, role, or service | 7 |
 | **Prompt injection** | Tricking an AI with instructions hidden in data it reads | 1, 8 |
 | **Redact** | Remove or replace sensitive details, like secrets or personal data, before sharing something | 1 |
+| **Regression test** | A test for a bug you already fixed, so it can't quietly come back | 3 |
 | **Role (IAM)** | An identity with no permanent password or keys. You assume it to get temporary credentials. | 7 |
 | **Root** | The all-powerful admin account on Linux. Ignores file permissions. | 2 |
 | **SBOM** | Software Bill of Materials: a list of everything inside a piece of software | 5 |
@@ -52,9 +58,11 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Snapshot** | A saved state of a VM or disk that you can return to later | 2, 9 |
 | **SOC** | Security Operations Center: the team that watches for and responds to attacks | 0, 9 |
 | **SSH** | Secure Shell: an encrypted way to log in to a remote machine | 2 |
+| **Standard library** | The modules that come with Python, like `json` and `ipaddress`. Nothing extra to install or trust. | 3 |
 | **Subagent** | A helper AI agent with its own instructions and a limited set of tools, for one job | 1, 9 |
 | **Subnet** | A slice of a network's address range | 4 |
 | **sudo** | Runs one command as root. Who can use it is one of the most important questions on a server. | 2 |
 | **Ticket** | A tracked record of a request or problem | 0 |
+| **Virtual environment** | A private folder of Python packages for one project | 3 |
 | **VM (virtual machine)** | A whole computer running as software inside your real one | 2 |
 | **Zero trust** | Never trust a request because of where it comes from; verify every time | 8 |
