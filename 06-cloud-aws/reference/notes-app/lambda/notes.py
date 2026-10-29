@@ -25,6 +25,11 @@ def list_notes():
     return respond(200, sorted(notes, key=lambda n: n["created"], reverse=True))
 
 
+def request_id(event):
+    """API Gateway's ID for this request, so one request can be followed across every log."""
+    return event.get("requestContext", {}).get("requestId", "unknown")
+
+
 def create_note(event):
     try:
         text = json.loads(event.get("body") or "{}").get("text")
@@ -37,7 +42,7 @@ def create_note(event):
     table.put_item(Item=note)
     sqs.send_message(
         QueueUrl=os.environ["QUEUE_URL"],
-        MessageBody=json.dumps({"event": "note_created", "id": note["id"]}),
+        MessageBody=json.dumps({"event": "note_created", "id": note["id"], "requestId": request_id(event)}),
     )
     return respond(201, note)
 
@@ -56,6 +61,7 @@ def delete_note(event):
 
 def handler(event, context):
     route = event.get("routeKey")
+    print(json.dumps({"requestId": request_id(event), "route": route}))
     if route == "GET /notes":
         return list_notes()
     if route == "POST /notes":

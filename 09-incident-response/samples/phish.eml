@@ -1,0 +1,40 @@
+Return-Path: <billing@rnicrosoft-support.example>
+Received: from mail.rnicrosoft-support.example (unknown [203.0.113.45])
+	by mx.brightsmile-dental.example (Postfix) with ESMTP id 4F2A91C0B7
+	for <maria@brightsmile-dental.example>; Sat, 14 Mar 2026 06:12:03 +0000 (UTC)
+Authentication-Results: mx.brightsmile-dental.example;
+	spf=fail (domain of rnicrosoft-support.example does not designate 203.0.113.45 as permitted sender) smtp.mailfrom=billing@rnicrosoft-support.example;
+	dkim=none (message not signed);
+	dmarc=fail (p=NONE) header.from=microsoft.com
+From: "Microsoft 365 Billing" <billing@microsoft.com>
+Reply-To: "Microsoft 365 Billing" <billing-desk@rnicrosoft-support.example>
+To: maria@brightsmile-dental.example
+Subject: URGENT: Your Microsoft 365 subscription will be suspended today
+Date: Sat, 14 Mar 2026 06:11:58 +0000
+Message-ID: <a81f3c2e9d@rnicrosoft-support.example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="==BOUNDARY=="
+
+--==BOUNDARY==
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Dear Customer,</p>
+<p>We were unable to process your last payment. Your mailbox and files will be
+<b>permanently deleted within 24 hours</b> unless you verify your billing details.</p>
+<p><a href="https://rnicrosoft-support.example/login/verify?u=maria">https://login.microsoftonline.com/billing/verify</a></p>
+<p>Please review the attached invoice.</p>
+<p>Microsoft 365 Billing Team</p>
+</body></html>
+
+--==BOUNDARY==
+Content-Type: application/octet-stream; name="Invoice_0314.pdf.html"
+Content-Disposition: attachment; filename="Invoice_0314.pdf.html"
+Content-Transfer-Encoding: base64
+
+PGh0bWw+PGJvZHk+PGgxPk1pY3Jvc29mdCAzNjUgU2lnbi1pbjwvaDE+PGZvcm0gYWN0aW9uPSJo
+dHRwczovL3JuaWNyb3NvZnQtc3VwcG9ydC5leGFtcGxlL2NvbGxlY3QiIG1ldGhvZD0icG9zdCI+
+PGlucHV0IG5hbWU9ImVtYWlsIj48aW5wdXQgbmFtZT0icGFzc3dvcmQiIHR5cGU9InBhc3N3b3Jk
+Ij48YnV0dG9uPlNpZ24gaW48L2J1dHRvbj48L2Zvcm0+PC9ib2R5PjwvaHRtbD4K
+
+--==BOUNDARY==--

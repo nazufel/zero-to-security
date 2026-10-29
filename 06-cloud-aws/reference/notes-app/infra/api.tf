@@ -43,6 +43,19 @@ resource "aws_apigatewayv2_stage" "default" {
     throttling_burst_limit = 10
     throttling_rate_limit  = 5
   }
+
+  access_log_settings {
+    destination_arn = aws_cloudwatch_log_group.api_access.arn
+    format = jsonencode({
+      requestId = "$context.requestId"
+      time      = "$context.requestTime"
+      ip        = "$context.identity.sourceIp"
+      caller    = "$context.identity.userArn"
+      route     = "$context.routeKey"
+      status    = "$context.status"
+      userAgent = "$context.identity.userAgent"
+    })
+  }
 }
 
 resource "aws_lambda_permission" "api" {

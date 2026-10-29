@@ -45,6 +45,11 @@ resource "aws_iam_role_policy" "audit" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "audit_xray" {
+  role       = aws_iam_role.audit.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess"
+}
+
 resource "aws_cloudwatch_log_group" "audit" {
   name              = "/aws/lambda/${var.name}-audit"
   retention_in_days = 14
@@ -57,6 +62,10 @@ resource "aws_lambda_function" "audit" {
   handler          = "audit.handler"
   filename         = data.archive_file.audit.output_path
   source_code_hash = data.archive_file.audit.output_base64sha256
+
+  tracing_config {
+    mode = "Active"
+  }
 
   depends_on = [aws_cloudwatch_log_group.audit]
 }

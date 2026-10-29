@@ -56,6 +56,8 @@ jobs:
       - uses: opentofu/setup-opentofu@a1320f892987e89d278cc92dc5adc984fb93aca4 # v2.0.2
       - name: tofu plan
         working-directory: notes-app/infra
+        env:
+          TF_VAR_alert_email: ${{ vars.ALERT_EMAIL }} # Module 9: where alarms are sent
         run: |
           tofu init -input=false
           tofu plan -input=false -lock-timeout=60s
@@ -76,6 +78,8 @@ jobs:
       - uses: opentofu/setup-opentofu@a1320f892987e89d278cc92dc5adc984fb93aca4 # v2.0.2
       - name: tofu apply
         working-directory: notes-app/infra
+        env:
+          TF_VAR_alert_email: ${{ vars.ALERT_EMAIL }} # Module 9: where alarms are sent
         run: |
           tofu init -input=false
           tofu apply -input=false -auto-approve -lock-timeout=60s

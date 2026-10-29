@@ -1,10 +1,10 @@
 # Reference: the notes app
 
-This is where the notes app ends up after [Module 6](../../) (the app), [Module 7](../../../07-identity/) (identity), and [Module 8](../../../08-security-concepts/) (hardening, pipeline). **Build it yourself first.** Use this copy to check your work, or to get unstuck after the [20-minute rule](../../../00-start-here/05-getting-unstuck.md).
+This is where the notes app ends up after [Module 6](../../) (the app), [Module 7](../../../07-identity/) (identity), [Module 8](../../../08-security-concepts/) (hardening, pipeline), and [Module 9](../../../09-incident-response/) (logging, alarms, tracing). **Build it yourself first.** Use this copy to check your work, or to get unstuck after the [20-minute rule](../../../00-start-here/05-getting-unstuck.md).
 
 Because it's the **final** state, some things differ from what a Module 6 lesson shows. For example, the delete route uses IAM authentication instead of an admin token (Module 8, lesson 3), and there's no SSH key or port 22 (Module 8, lesson 7).
 
-> **Last verified:** 2026-10-29. `infra/` and `pipeline/` are validated with OpenTofu 1.13 and the AWS provider 6.x (`tofu validate`), `infra/` passes Checkov 3.4.0 with `.checkov.yaml`, and the Lambda code is tested locally against stubbed AWS clients. Not applied to a live account by the course; if anything fails for you, [open an issue](../../../../../issues/new/choose).
+> **Last verified:** 2026-10-29. `infra/` and `pipeline/` are validated with OpenTofu 1.13 and the AWS provider 6.x (`tofu validate`), `infra/` passes Checkov 3.4.0 with `.checkov.yaml` (221 checks), and the Lambda code is tested locally against stubbed AWS clients. Not applied to a live account by the course; if anything fails for you, [open an issue](../../../../../issues/new/choose).
 
 ## Layout
 
@@ -19,7 +19,8 @@ Because it's the **final** state, some things differ from what a Module 6 lesson
 
 1. Create the state bucket once ([Module 8, lesson 13](../../../08-security-concepts/13-secure-pipeline.md)), and put its name in the `backend "s3"` blocks in `infra/main.tf` and `pipeline/main.tf`.
 2. Set `github_repo` in `pipeline/main.tf` to your repository.
-3. From each folder, signed in with `aws login` and `AWS_PROFILE=lab`:
+3. Put your email in `infra/terraform.tfvars` as `alert_email = "you@example.com"` (Module 9), and confirm the subscription email AWS sends.
+4. From each folder, signed in with `aws login` and `AWS_PROFILE=lab`:
 
    ```bash
    cd pipeline && tofu init && tofu apply

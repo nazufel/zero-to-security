@@ -15,6 +15,7 @@ skip-check:
   - CKV_AWS_144   # S3 cross-region replication: doubles storage cost; versioning covers our recovery needs
   - CKV_AWS_310   # CloudFront origin failover: needs a second origin; not needed for a demo site
   - CKV_AWS_338   # Keep logs 1 year: lab logs are kept 14 days to stay free
+  - CKV_AWS_35    # CloudTrail logs with a CMK: SSE-S3 is on; a CMK costs ~$1/month
   # --- Needs things a learner account doesn't have ---
   - CKV2_AWS_42   # Custom TLS certificate: needs a domain name you own
   - CKV_AWS_174   # TLS 1.2 minimum on CloudFront: only settable with a custom certificate (see above)
@@ -31,12 +32,11 @@ skip-check:
   - CKV_AWS_374   # CloudFront geo restriction: no business reason to block countries
   - CKV2_AWS_61   # S3 lifecycle rules: the files bucket has one; the site bucket holds one small file
   - CKV2_AWS_62   # S3 event notifications: nothing needs to react to uploads
+  - CKV_AWS_252   # CloudTrail SNS notifications per log file: noise; alarms watch the trail instead
+  - CKV_AWS_26    # SNS encryption: the free AWS-managed key can't be used by CloudWatch alarms, so alerts would silently fail; a CMK costs money
   - CKV_AWS_274   # AdministratorAccess on the deploy role: deploying creates IAM roles, so it needs broad rights; it's limited to one repo's production environment, which requires a human approval
   # --- False positive (we checked) ---
   - CKV2_AWS_32   # Response headers policy: attached, using AWS's managed SecurityHeadersPolicy by ID; Checkov only recognizes a policy resource
-  # --- Coming in Module 9 (Incident Response) ---
-  - CKV2_AWS_11   # VPC flow logs: Module 9, lesson 5
-  - CKV_AWS_50    # X-Ray tracing: Module 9, lesson 6
-  - CKV_AWS_18    # S3 access logging: Module 9
-  - CKV_AWS_76    # API Gateway access logging: Module 9, lesson 4
-  - CKV_AWS_86    # CloudFront access logging: Module 9
+  # --- Logging covered another way (Module 9) ---
+  - CKV_AWS_18    # S3 server access logs: CloudTrail data events record files-bucket object access, with identity
+  - CKV_AWS_86    # CloudFront access logs: needs a separate ACL-enabled bucket; the API's access logs record every data request

@@ -44,6 +44,11 @@ resource "aws_iam_role_policy" "notes" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "notes_xray" {
+  role       = aws_iam_role.notes.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess"
+}
+
 resource "aws_cloudwatch_log_group" "notes" {
   name              = "/aws/lambda/${var.name}-api"
   retention_in_days = 14
@@ -57,6 +62,10 @@ resource "aws_lambda_function" "notes" {
   filename         = data.archive_file.notes.output_path
   source_code_hash = data.archive_file.notes.output_base64sha256
   timeout          = 10
+
+  tracing_config {
+    mode = "Active"
+  }
 
   environment {
     variables = {

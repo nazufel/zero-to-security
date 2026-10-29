@@ -6,13 +6,16 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 |---|---|---|
 | **ABAC** | Attribute-based access control: granting access by tags, like "developers can change functions tagged team = notes" | 7 |
 | **Agent (AI)** | An AI that can take actions, like running commands or editing files, not just answer questions | 1 |
+| **Alert triage** | Deciding whether an alert is a real attack, noise, or authorized activity, and what to do next | 9 |
 | **AMI** | A disk image for an EC2 instance, like Ubuntu 26.04 | 6 |
 | **API Gateway** | AWS's front door for APIs: takes HTTPS requests and passes them to Lambda | 6 |
 | **AssumeRole** | Temporarily taking on an IAM role's permissions | 7 |
 | **Authentication** | Proving who you are (password, key, MFA). Fails with 401. | 7 |
 | **Authorization** | Deciding what you're allowed to do (policies, groups). Fails with 403. | 7 |
+| **Benign true positive** | An alert that correctly detected real behavior, which turned out to be authorized | 9 |
 | **Blast radius** | How much damage a mistake or compromise can do. Least privilege shrinks it. | 1, 7 |
 | **Certificate** | A file that proves a site's identity, vouched for by a certificate authority. Browsers warn when one is expired, untrusted, or for a different name. | 4 |
+| **Chain of custody** | A record of who collected each piece of evidence, when, how, and its hash, proving it wasn't changed | 9 |
 | **CI/CD** | Continuous integration and delivery: a pipeline that tests, scans, and deploys every change automatically | 8 |
 | **CIA triad** | Confidentiality, integrity, and availability: the three things security protects | 8 |
 | **CIDR** | Notation for a range of IP addresses, like `10.0.0.0/24` | 4 |
@@ -23,6 +26,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Commit** | A saved snapshot of changes in Git | 0 |
 | **Confused deputy** | A trusted service tricked into using its access for the wrong customer. Prevented by an External ID. | 7 |
 | **Container** | A packaged app with just what it needs to run, isolated from the rest of the system | 5 |
+| **Correlation ID** | One ID logged at every step of a request, so it can be followed across services | 9 |
 | **CORS** | Browser rules for which websites may call an API on another domain | 6 |
 | **CVE** | A public ID for a known vulnerability | 5 |
 | **CVSS** | A 0 to 10 score for how severe a vulnerability could be | 5, 8 |
@@ -33,6 +37,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **DHCP** | The service that hands a device its IP address, gateway, and DNS servers when it joins a network | 4 |
 | **Digest** | A unique fingerprint of a container image. Unlike a tag, it can't be moved. | 5 |
 | **DNS** | The system that turns names like `example.com` into IP addresses | 4 |
+| **Dwell time** | How long an attacker is in a system before being noticed | 9 |
 | **DynamoDB** | AWS's serverless database | 6 |
 | **EC2** | AWS's virtual servers | 6 |
 | **Encoding** | Changing data's format, like base64. Reversible by anyone. Not security. | 1, 4 |
@@ -43,7 +48,10 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Extended thinking** | A mode where an AI model reasons step by step before answering. Slower, but better on hard, multi-step problems. | 1 |
 | **External ID** | A shared value a third party must send to assume your role, preventing the confused deputy problem | 7 |
 | **Fail open / fail closed** | What a security check does when it hits an error: allow (open, dangerous) or deny (closed, safe) | 3 |
+| **False negative** | An attack that never triggered an alert. The most dangerous outcome. | 9 |
+| **False positive** | An alert that fired when nothing malicious happened | 9 |
 | **Firewall** | Software that decides which network connections are allowed in or out. Ubuntu's is `ufw`. | 2, 4 |
+| **Flow logs (VPC)** | Records of network connections in a VPC: who, to whom, which port, and whether it was allowed | 9 |
 | **Hallucination** | When AI states something false with confidence | 1 |
 | **Hash** | A one-way fingerprint of data. Used to store passwords and to check files haven't changed. | 4 |
 | **Hook (Claude Code)** | A script that runs automatically before or after Claude Code acts, and can block the action | 1, 8 |
@@ -53,7 +61,9 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **IMDSv2** | The safer version of the EC2 metadata service. Requires a token, which blocks a common credential-theft trick. | 6 |
 | **Implicit deny** | AWS's default: anything not explicitly allowed is denied | 7 |
 | **Incident** | Something broken or under attack right now | 0, 9 |
+| **Incident commander** | The person who runs an incident: coordinates and decides, but doesn't investigate | 9 |
 | **Instance profile** | The wrapper that delivers an IAM role to an EC2 instance | 7 |
+| **IOC (indicator of compromise)** | A clue that can be searched for or blocked: a domain, IP address, file hash, or email subject | 9 |
 | **Journal** | Where systemd services on Linux write their logs. Read it with `journalctl`. | 2 |
 | **JSON** | A plain-text data format that almost every tool and API speaks. Looks like a Python dictionary. | 3 |
 | **KEV** | CISA's Known Exploited Vulnerabilities list: vulnerabilities attackers are using now | 8 |
@@ -66,12 +76,15 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Lockfile** | A file, like `uv.lock`, that pins the exact version and hash of every package so every install is identical | 3, 5 |
 | **Managed settings** | An organization-wide Claude Code policy that individual users can't override | 1, 8 |
 | **MCP** | Model Context Protocol: a standard way to connect AI to tools and data | 1, 6 |
+| **Metric filter** | A CloudWatch rule that turns matching log lines into a number you can alarm on | 9 |
 | **MFA** | Multi-factor authentication: something you know plus something you have | 0, 7 |
 | **Minimal image** | A container image with only what the app needs to run, often with no shell or package manager | 5 |
+| **MITRE ATT&CK** | A public catalog of attacker tactics and techniques, used as a shared vocabulary | 9 |
 | **Multi-stage build** | A Dockerfile that builds in one image and copies only the result into a smaller one to ship | 5 |
 | **NACL** | A stateless firewall on an AWS subnet, with numbered allow and deny rules | 6 |
 | **OIDC** | A login standard that lets systems like GitHub Actions get short-lived cloud credentials with no stored keys | 8 |
 | **OpenTofu** | A free, open-source tool for Infrastructure as Code | 6 |
+| **Order of volatility** | Collect the evidence that disappears fastest first: memory, then network, then disk, then remote logs | 9 |
 | **OWASP** | A nonprofit that publishes widely used security guidance, including the Top 10 lists | 1, 8 |
 | **Package manager** | A tool that downloads, installs, and updates software from a trusted source, like `apt` on Ubuntu | 2, 3 |
 | **Packet capture** | A recording of network traffic, made with tools like `tcpdump` and read in Wireshark | 4, 9 |
@@ -95,6 +108,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Service** | A program that runs in the background, like a web or SSH server. Managed with `systemctl`. | 2 |
 | **Service account** | An identity for software, not a person. In AWS, it should be a role. | 7 |
 | **Session Manager** | AWS's way to get a shell on a server with no inbound ports, controlled by IAM and logged | 8 |
+| **Severity (SEV)** | A level, like SEV-1 to SEV-4, that sets how fast and how big the response to an incident is | 9 |
 | **Shared responsibility model** | AWS secures the cloud itself; you secure what you put in it and how you configure it | 6 |
 | **Signature (image)** | Proof of who built an image, checked with cosign against an identity you trust | 5 |
 | **Skill (Claude Code)** | Packaged instructions for a repeatable task, stored in a `SKILL.md` file | 1, 9 |
@@ -108,11 +122,13 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Subagent** | A helper AI agent with its own instructions and a limited set of tools, for one job | 1, 9 |
 | **Subnet** | A slice of a network's address range | 4 |
 | **sudo** | Runs one command as root. Who can use it is one of the most important questions on a server. | 2 |
+| **Tabletop exercise** | Practicing an incident by talking it through, with no real systems at risk | 9 |
 | **Tag (image)** | A movable, human-friendly label for an image, like `latest`. Unlike a digest, it can be repointed. | 5 |
 | **TCP / UDP** | The two ways to send data. TCP is reliable and ordered (web, SSH). UDP is fast with no guarantees (DNS, video). | 4 |
 | **Threat model** | A structured look at what could go wrong in a system, and what stops it | 8 |
 | **Ticket** | A tracked record of a request or problem | 0 |
 | **TLS** | The encryption behind HTTPS. Also checks the site's certificate. | 4 |
+| **True positive** | An alert that correctly caught something malicious | 9 |
 | **Trust boundary** | Where data crosses from a less-trusted part of a system to a more-trusted one | 8 |
 | **Trust policy** | The policy on a role that says who can assume it | 7 |
 | **Virtual environment** | A private folder of Python packages for one project | 3 |
