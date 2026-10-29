@@ -2,8 +2,6 @@
 
 **Pillars:** 🪪 Identity · 🤖 AI
 
-> 🚧 **Outline.** Lessons are being written. The checklist and plan below are final.
-
 ## Why this module matters
 
 Most servers, containers, and cloud workloads run Linux. When something breaks or gets attacked, the evidence is in a Linux log, and the fix happens at a Linux command line. You'll use these skills in every module after this one.
@@ -30,24 +28,24 @@ We keep it lean: only what you'll actually use.
 - [ ] You can write a short Bash script with a variable and a loop
 - [ ] You can run Claude Code in the VM and explain every command before you approve it
 
-## Lessons (planned)
+## Lessons
 
-1. **Install Ubuntu in a VM** (UTM on Mac, VirtualBox on Windows) and take your first snapshot
-2. **Finding your way:** `pwd`, `ls`, `cd`, `find`, tab completion
-3. **Working with files:** `touch`, `cp`, `mv`, `rm`, `mkdir`, `cat`, `less`, `nano`
-4. **Permissions:** `chmod`, `chown`, `sudo`. *Break it:* read another user's private file. *(Identity starts here.)*
-5. **Packages:** `apt update`, `apt upgrade`, `apt install`, and why unpatched software gets you breached
-6. **Services:** `systemctl` and what's running on your machine
-7. **Users and groups:** `adduser`, `usermod`, `groups`, the `sudo` group
-8. **Logs and pipes:** `journalctl`, `/var/log/auth.log`, `grep`, `|`
-9. **SSH:** key pairs, `ssh-copy-id`, disabling password login
-10. **Bash scripting basics:** variables, loops, one useful script
-11. **Claude Code in the box:** install it in the VM, permission modes, why you never approve `sudo` blindly
+1. [Install Ubuntu in a VM](01-install-ubuntu.md)
+2. [Finding your way](02-finding-your-way.md)
+3. [Working with files](03-working-with-files.md)
+4. [Permissions](04-permissions.md)
+5. [Packages](05-packages.md)
+6. [Services](06-services.md)
+7. [Users and groups](07-users-and-groups.md)
+8. [Logs and pipes](08-logs-and-pipes.md)
+9. [SSH keys](09-ssh.md)
+10. [Bash scripting basics](10-bash-scripting.md)
+11. [Claude Code in the box](11-claude-code-in-the-box.md)
 
 ## Practice
 
-- **Challenge:** [OverTheWire Bandit](https://overthewire.org/wargames/bandit/), levels 0–15
-- **Project:** harden your VM: new admin user, SSH keys only, password login off, firewall (`ufw`) on, automatic security updates. Write it as a script **by hand**, then have Claude write one, and diff the two. Commit both with a README explaining every line.
+- [Quiz](quiz.md), with the challenge: [OverTheWire Bandit](https://overthewire.org/wargames/bandit/), levels 0–15
+- [Project: harden your VM, in a script](project.md): new admin user, SSH keys only, password login off, firewall (`ufw`) on, automatic security updates. Written **by hand**, then by Claude, diffed and reviewed.
 
 ## Dig Deeper
 
