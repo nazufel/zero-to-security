@@ -2,8 +2,6 @@
 
 **Pillars:** 🪪 Identity · ☁️ Cloud · 🤖 AI
 
-> 🚧 **Outline.** Lessons are being written. The checklist and plan below are final.
-
 ## Why this module matters
 
 Attackers don't break in, they log in. Stolen credentials and over-broad permissions are behind a huge share of real breaches, and "broken access control" is #1 on the OWASP Top 10. Identity is the new perimeter. AWS IAM is free, so every lab in this module costs nothing.
@@ -20,31 +18,33 @@ Attackers don't break in, they log in. Stolen credentials and over-broad permiss
 - [ ] You can explain the confused deputy problem and how External ID prevents it
 - [ ] You can give an AI agent its own least-privilege role and explain every permission in it
 
-## Lessons (planned)
+## Lessons
 
-1. **Identity 101:** authentication vs. authorization; Linux users, groups, and `sudo` revisited
-2. **Principals:** root user, IAM users, IAM roles, federated users, AWS services. Opinion: humans never get long-lived access keys.
-3. **Groups:** permissions go on groups, never directly on users. Gotchas: groups can't be nested and aren't principals.
-4. **Policies:** identity-based, resource-based (S3 bucket policies), trust policies, permissions boundaries. JSON anatomy: Effect, Action, Resource, Condition. SCPs explained, not hands-on.
-5. **Permissions and evaluation logic:** deny beats allow beats implicit deny; conditions such as require-MFA and source IP; a preview of tag-based access (ABAC)
-6. **Service accounts:** in AWS they're roles, like the Lambda execution role and the EC2 instance profile. Why an IAM user with keys used as a service account is the #1 real-world finding.
-7. **Impersonation:** `sts:AssumeRole`, temporary credentials, role chaining, the confused deputy and External ID, and tracing *who really did it* in CloudTrail
-8. **AI agents are principals too:** Claude Code, MCP servers, and subagents act with credentials, so they get their own role, a trust policy, and an audit trail. *(OWASP LLM: Excessive Agency)*
+1. [Identity 101](01-identity-101.md): authentication vs. authorization; Linux users, groups, and `sudo` revisited
+2. [Principals](02-principals.md): root user, IAM users, IAM roles, federated users, AWS services. Opinion: humans never get long-lived access keys.
+3. [Groups](03-groups.md): permissions go on groups, never directly on users. Gotchas: groups can't be nested and aren't principals.
+4. [Policies](04-policies.md): identity-based, resource-based, trust policies, permissions boundaries, and SCPs explained. JSON anatomy, and Access Analyzer validation.
+5. [Permissions and evaluation logic](05-evaluation-logic.md): deny beats allow beats implicit deny; conditions such as require-MFA; a preview of ABAC. Predict, then prove with the Policy Simulator.
+6. [Service accounts](06-service-accounts.md): in AWS they're roles, like the Lambda execution role and the EC2 instance profile
+7. [Impersonation](07-impersonation.md): `sts:AssumeRole`, temporary credentials, the confused deputy and External ID, and tracing *who really did it* in CloudTrail
+8. [AI agents are principals too](08-ai-agents-are-principals.md): a role per AI task, a trust policy, explicit denies, and an audit trail. *(OWASP LLM: Excessive Agency)*
 
 > **Why no Identity Center labs?** On AWS's free plan, joining an AWS Organization ends your free credits immediately, and Identity Center normally needs one. You'll learn Identity Center and SCPs as "what you'll see at work." ([AWS Free Tier FAQs](https://aws.amazon.com/free/faqs/), **last verified:** 2026-10-27)
 
 ## Labs (all free)
 
-- Build users, groups, and roles for a fictional team: dev, analyst, auditor
-- **Break it:** write a policy, predict the result, then test it in the IAM Policy Simulator
-- Assume a role from the CLI, then find the `AssumeRole` event in CloudTrail event history
-- Validate policies with IAM Access Analyzer's policy checks
-- **With Claude:** have Claude write a least-privilege policy for the notes app's Lambda, then prove it right or too broad with the simulator
+All of these are in the lessons:
+
+- Users, groups, and roles for a fictional team: developers, analysts, auditors ([lesson 3](03-groups.md))
+- **Break it:** write a policy, predict the result, then test it in the IAM Policy Simulator ([lesson 5](05-evaluation-logic.md))
+- Assume a role from the CLI, then find the `AssumeRole` event in CloudTrail ([lesson 7](07-impersonation.md))
+- Validate policies with IAM Access Analyzer ([lesson 4](04-policies.md) and the project)
+- **With Claude:** have Claude write least-privilege policies, then prove them right or too broad with the simulator ([lessons 4](04-policies.md), [5](05-evaluation-logic.md), and [8](08-ai-agents-are-principals.md))
 
 ## Practice
 
-- **Challenges:** "This policy allows `s3:*` on `*` with a deny on one bucket. Can Alice read that bucket?" · "Find three problems in this trust policy."
-- **Project:** an identity design for the notes app: principals, roles, trust relationships, and a diagram, all in OpenTofu. *(OWASP A01: Broken Access Control, A07: Authentication Failures)*
+- [Quiz](quiz.md), including the challenges: "This policy allows `s3:*` on `*` with a deny on one bucket. Can Alice read that bucket?" · "Find three problems in this trust policy." · [flaws2.cloud](http://flaws2.cloud/)
+- [Project: an identity design for the notes app](project.md): principals, roles, trust relationships, a diagram, and tests, all in OpenTofu. *(OWASP A01: Broken Access Control, A07: Authentication Failures)*
 
 ## Dig Deeper
 

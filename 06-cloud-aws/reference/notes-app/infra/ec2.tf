@@ -34,6 +34,7 @@ resource "aws_instance" "lab" {
   instance_type          = "t3.micro"
   key_name               = aws_key_pair.lab.key_name
   subnet_id              = aws_subnet.public.id
+  iam_instance_profile   = aws_iam_instance_profile.lab.name
   vpc_security_group_ids = [aws_security_group.ssh.id]
 
   metadata_options {

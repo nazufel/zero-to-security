@@ -4,10 +4,13 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 
 | Term | Meaning | Module |
 |---|---|---|
+| **ABAC** | Attribute-based access control: granting access by tags, like "developers can change functions tagged team = notes" | 7 |
 | **Agent (AI)** | An AI that can take actions, like running commands or editing files, not just answer questions | 1 |
 | **AMI** | A disk image for an EC2 instance, like Ubuntu 26.04 | 6 |
 | **API Gateway** | AWS's front door for APIs: takes HTTPS requests and passes them to Lambda | 6 |
 | **AssumeRole** | Temporarily taking on an IAM role's permissions | 7 |
+| **Authentication** | Proving who you are (password, key, MFA). Fails with 401. | 7 |
+| **Authorization** | Deciding what you're allowed to do (policies, groups). Fails with 403. | 7 |
 | **Blast radius** | How much damage a mistake or compromise can do. Least privilege shrinks it. | 1, 7 |
 | **Certificate** | A file that proves a site's identity, vouched for by a certificate authority. Browsers warn when one is expired, untrusted, or for a different name. | 4 |
 | **CIDR** | Notation for a range of IP addresses, like `10.0.0.0/24` | 4 |
@@ -16,6 +19,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **CloudTrail** | AWS's audit log: who did what, when, from where | 9 |
 | **Command injection** | When input is run as part of a shell command, letting an attacker run their own commands. Prevented by passing arguments as a list. | 3 |
 | **Commit** | A saved snapshot of changes in Git | 0 |
+| **Confused deputy** | A trusted service tricked into using its access for the wrong customer. Prevented by an External ID. | 7 |
 | **Container** | A packaged app with just what it needs to run, isolated from the rest of the system | 5 |
 | **CORS** | Browser rules for which websites may call an API on another domain | 6 |
 | **CVE** | A public ID for a known vulnerability | 5 |
@@ -31,7 +35,9 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Encoding** | Changing data's format, like base64. Reversible by anyone. Not security. | 1, 4 |
 | **Encryption** | Scrambling data so only someone with the key can read it | 4, 8 |
 | **Excessive agency** | Giving an AI more power than its task needs. An OWASP LLM Top 10 risk. | 1, 8 |
+| **Explicit deny** | A Deny statement in a policy. Always wins over any Allow. | 7 |
 | **Extended thinking** | A mode where an AI model reasons step by step before answering. Slower, but better on hard, multi-step problems. | 1 |
+| **External ID** | A shared value a third party must send to assume your role, preventing the confused deputy problem | 7 |
 | **Fail open / fail closed** | What a security check does when it hits an error: allow (open, dangerous) or deny (closed, safe) | 3 |
 | **Firewall** | Software that decides which network connections are allowed in or out. Ubuntu's is `ufw`. | 2, 4 |
 | **Hallucination** | When AI states something false with confidence | 1 |
@@ -41,7 +47,9 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **IAM** | Identity and Access Management: AWS's system for who can do what | 7 |
 | **Image (container)** | A packaged template for containers: an app plus everything it needs. A container is a running copy of one. | 5 |
 | **IMDSv2** | The safer version of the EC2 metadata service. Requires a token, which blocks a common credential-theft trick. | 6 |
+| **Implicit deny** | AWS's default: anything not explicitly allowed is denied | 7 |
 | **Incident** | Something broken or under attack right now | 0, 9 |
+| **Instance profile** | The wrapper that delivers an IAM role to an EC2 instance | 7 |
 | **Journal** | Where systemd services on Linux write their logs. Read it with `journalctl`. | 2 |
 | **JSON** | A plain-text data format that almost every tool and API speaks. Looks like a Python dictionary. | 3 |
 | **Key pair (SSH)** | A private key that stays with you and a public key you put on servers. Logs you in with nothing guessable sent over the network. | 2 |
@@ -62,6 +70,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **Package manager** | A tool that downloads, installs, and updates software from a trusted source, like `apt` on Ubuntu | 2, 3 |
 | **Packet capture** | A recording of network traffic, made with tools like `tcpdump` and read in Wireshark | 4, 9 |
 | **Parameter Store** | An AWS Systems Manager feature for storing settings and secrets (as encrypted SecureStrings) | 6 |
+| **Permissions boundary** | A cap on the most a user or role can ever be allowed, whatever its other policies say | 7 |
 | **Phishing** | A fake message designed to trick someone into clicking, paying, or giving up a password | 9 |
 | **Pipe** | The `\|` character: sends one command's output into the next command | 2 |
 | **Port** | A numbered door on a computer that a network service listens on, like 22 for SSH | 4 |
@@ -77,6 +86,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **SBOM** | Software Bill of Materials: a list of everything inside a piece of software | 5 |
 | **Security group** | A stateful firewall attached to an AWS resource | 6 |
 | **Service** | A program that runs in the background, like a web or SSH server. Managed with `systemctl`. | 2 |
+| **Service account** | An identity for software, not a person. In AWS, it should be a role. | 7 |
 | **Shared responsibility model** | AWS secures the cloud itself; you secure what you put in it and how you configure it | 6 |
 | **Signature (image)** | Proof of who built an image, checked with cosign against an identity you trust | 5 |
 | **Skill (Claude Code)** | Packaged instructions for a repeatable task, stored in a `SKILL.md` file | 1, 9 |
@@ -93,6 +103,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **TCP / UDP** | The two ways to send data. TCP is reliable and ordered (web, SSH). UDP is fast with no guarantees (DNS, video). | 4 |
 | **Ticket** | A tracked record of a request or problem | 0 |
 | **TLS** | The encryption behind HTTPS. Also checks the site's certificate. | 4 |
+| **Trust policy** | The policy on a role that says who can assume it | 7 |
 | **Virtual environment** | A private folder of Python packages for one project | 3 |
 | **VM (virtual machine)** | A whole computer running as software inside your real one | 2 |
 | **Volume** | A host folder or file mounted into a container. Mount read-only (`:ro`) unless it must write. | 5 |

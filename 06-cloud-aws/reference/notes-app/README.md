@@ -1,6 +1,6 @@
 # Reference: the notes app
 
-This is where the [Module 6](../../) lessons and [project](../../project.md) end up. **Build it yourself first.** Use this copy to check your work, or to get unstuck after the [20-minute rule](../../../00-start-here/05-getting-unstuck.md).
+This is where the [Module 6](../../) lessons and [project](../../project.md) end up, plus the identity work from [Module 7](../../../07-identity/) (`team.tf`, `instance_profile.tf`, `vendor.tf`, and the second role in `claude.tf`). **Build it yourself first.** Use this copy to check your work, or to get unstuck after the [20-minute rule](../../../00-start-here/05-getting-unstuck.md).
 
 > **Last verified:** 2026-10-29. Validated with OpenTofu 1.13 and the AWS provider 6.x (`tofu validate`), and the Lambda code tested locally against stubbed AWS clients. Not applied to a live account by the course; if anything fails for you, [open an issue](../../../../../issues/new/choose).
 
