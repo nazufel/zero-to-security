@@ -1,0 +1,144 @@
+{
+  "Events": [
+    {
+      "EventId": "e14",
+      "EventName": "UpdateFunctionConfiguration20150331v2",
+      "ReadOnly": "false",
+      "EventTime": "2026-03-14T02:12:30Z",
+      "EventSource": "lambda.amazonaws.com",
+      "Username": "admin",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/admin\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:12:30Z\", \"eventSource\": \"lambda.amazonaws.com\", \"eventName\": \"UpdateFunctionConfiguration20150331v2\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"198.51.100.77\", \"userAgent\": \"OpenTofu/1.13.2\", \"readOnly\": false, \"eventID\": \"e14\"}"
+    },
+    {
+      "EventId": "e13",
+      "EventName": "GetParameter",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:11:02Z",
+      "EventSource": "ssm.amazonaws.com",
+      "Username": "ci-deploy",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/ci-deploy\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:11:02Z\", \"eventSource\": \"ssm.amazonaws.com\", \"eventName\": \"GetParameter\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"203.0.113.99\", \"userAgent\": \"python-requests/2.32\", \"readOnly\": true, \"eventID\": \"e13\"}"
+    },
+    {
+      "EventId": "e12",
+      "EventName": "CreateUser",
+      "ReadOnly": "false",
+      "EventTime": "2026-03-14T02:10:31Z",
+      "EventSource": "iam.amazonaws.com",
+      "Username": "ci-deploy",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/ci-deploy\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:10:31Z\", \"eventSource\": \"iam.amazonaws.com\", \"eventName\": \"CreateUser\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"203.0.113.99\", \"userAgent\": \"python-requests/2.32\", \"readOnly\": false, \"eventID\": \"e12\", \"errorCode\": \"AccessDenied\", \"errorMessage\": \"User: arn:aws:iam::123456789012:user/ci-deploy is not authorized to perform this action\"}"
+    },
+    {
+      "EventId": "e11",
+      "EventName": "ListTables",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:10:27Z",
+      "EventSource": "dynamodb.amazonaws.com",
+      "Username": "ci-deploy",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/ci-deploy\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:10:27Z\", \"eventSource\": \"dynamodb.amazonaws.com\", \"eventName\": \"ListTables\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"203.0.113.99\", \"userAgent\": \"python-requests/2.32\", \"readOnly\": true, \"eventID\": \"e11\", \"errorCode\": \"AccessDenied\", \"errorMessage\": \"User: arn:aws:iam::123456789012:user/ci-deploy is not authorized to perform this action\"}"
+    },
+    {
+      "EventId": "e10",
+      "EventName": "DescribeInstances",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:10:23Z",
+      "EventSource": "ec2.amazonaws.com",
+      "Username": "ci-deploy",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/ci-deploy\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:10:23Z\", \"eventSource\": \"ec2.amazonaws.com\", \"eventName\": \"DescribeInstances\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"203.0.113.99\", \"userAgent\": \"python-requests/2.32\", \"readOnly\": true, \"eventID\": \"e10\", \"errorCode\": \"AccessDenied\", \"errorMessage\": \"User: arn:aws:iam::123456789012:user/ci-deploy is not authorized to perform this action\"}"
+    },
+    {
+      "EventId": "e09",
+      "EventName": "GetSecretValue",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:10:19Z",
+      "EventSource": "secretsmanager.amazonaws.com",
+      "Username": "ci-deploy",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/ci-deploy\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:10:19Z\", \"eventSource\": \"secretsmanager.amazonaws.com\", \"eventName\": \"GetSecretValue\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"203.0.113.99\", \"userAgent\": \"python-requests/2.32\", \"readOnly\": true, \"eventID\": \"e09\", \"errorCode\": \"AccessDenied\", \"errorMessage\": \"User: arn:aws:iam::123456789012:user/ci-deploy is not authorized to perform this action\"}"
+    },
+    {
+      "EventId": "e08",
+      "EventName": "ListUsers",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:10:15Z",
+      "EventSource": "iam.amazonaws.com",
+      "Username": "ci-deploy",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/ci-deploy\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:10:15Z\", \"eventSource\": \"iam.amazonaws.com\", \"eventName\": \"ListUsers\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"203.0.113.99\", \"userAgent\": \"python-requests/2.32\", \"readOnly\": true, \"eventID\": \"e08\", \"errorCode\": \"AccessDenied\", \"errorMessage\": \"User: arn:aws:iam::123456789012:user/ci-deploy is not authorized to perform this action\"}"
+    },
+    {
+      "EventId": "e07",
+      "EventName": "ListBuckets",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:10:09Z",
+      "EventSource": "s3.amazonaws.com",
+      "Username": "ci-deploy",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/ci-deploy\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:10:09Z\", \"eventSource\": \"s3.amazonaws.com\", \"eventName\": \"ListBuckets\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"203.0.113.99\", \"userAgent\": \"python-requests/2.32\", \"readOnly\": true, \"eventID\": \"e07\"}"
+    },
+    {
+      "EventId": "e06",
+      "EventName": "GetCallerIdentity",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:10:05Z",
+      "EventSource": "sts.amazonaws.com",
+      "Username": "ci-deploy",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/ci-deploy\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:10:05Z\", \"eventSource\": \"sts.amazonaws.com\", \"eventName\": \"GetCallerIdentity\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"203.0.113.99\", \"userAgent\": \"python-requests/2.32\", \"readOnly\": true, \"eventID\": \"e06\"}"
+    },
+    {
+      "EventId": "e05",
+      "EventName": "DescribeInstances",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:04:02Z",
+      "EventSource": "ec2.amazonaws.com",
+      "Username": "claude-code",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"AssumedRole\", \"arn\": \"arn:aws:sts::123456789012:assumed-role/claude-readonly/claude-code\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:04:02Z\", \"eventSource\": \"ec2.amazonaws.com\", \"eventName\": \"DescribeInstances\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"198.51.100.77\", \"userAgent\": \"aws-cli/2.33.1 md/mcp\", \"readOnly\": true, \"eventID\": \"e05\"}"
+    },
+    {
+      "EventId": "e04",
+      "EventName": "AssumeRole",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:03:40Z",
+      "EventSource": "sts.amazonaws.com",
+      "Username": "admin",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/admin\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:03:40Z\", \"eventSource\": \"sts.amazonaws.com\", \"eventName\": \"AssumeRole\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"198.51.100.77\", \"userAgent\": \"aws-cli/2.33.1\", \"readOnly\": true, \"eventID\": \"e04\", \"requestParameters\": {\"roleArn\": \"arn:aws:iam::123456789012:role/claude-readonly\", \"roleSessionName\": \"claude-code\"}}"
+    },
+    {
+      "EventId": "e03",
+      "EventName": "UpdateFunctionCode20150331v2",
+      "ReadOnly": "false",
+      "EventTime": "2026-03-14T02:01:15Z",
+      "EventSource": "lambda.amazonaws.com",
+      "Username": "admin",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/admin\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:01:15Z\", \"eventSource\": \"lambda.amazonaws.com\", \"eventName\": \"UpdateFunctionCode20150331v2\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"198.51.100.77\", \"userAgent\": \"OpenTofu/1.13.2\", \"readOnly\": false, \"eventID\": \"e03\"}"
+    },
+    {
+      "EventId": "e02",
+      "EventName": "GetCallerIdentity",
+      "ReadOnly": "true",
+      "EventTime": "2026-03-14T02:00:02Z",
+      "EventSource": "sts.amazonaws.com",
+      "Username": "admin",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/admin\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T02:00:02Z\", \"eventSource\": \"sts.amazonaws.com\", \"eventName\": \"GetCallerIdentity\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"198.51.100.77\", \"userAgent\": \"aws-cli/2.33.1\", \"readOnly\": true, \"eventID\": \"e02\"}"
+    },
+    {
+      "EventId": "e01",
+      "EventName": "ConsoleLogin",
+      "ReadOnly": "false",
+      "EventTime": "2026-03-14T01:58:10Z",
+      "EventSource": "signin.amazonaws.com",
+      "Username": "admin",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\": \"1.11\", \"userIdentity\": {\"type\": \"IAMUser\", \"arn\": \"arn:aws:iam::123456789012:user/admin\", \"accountId\": \"123456789012\"}, \"eventTime\": \"2026-03-14T01:58:10Z\", \"eventSource\": \"signin.amazonaws.com\", \"eventName\": \"ConsoleLogin\", \"awsRegion\": \"us-east-1\", \"sourceIPAddress\": \"198.51.100.77\", \"userAgent\": \"Mozilla/5.0\", \"readOnly\": false, \"eventID\": \"e01\"}"
+    }
+  ]
+}

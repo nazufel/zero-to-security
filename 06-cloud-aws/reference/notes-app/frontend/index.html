@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notes</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 36rem; margin: 2rem auto; padding: 0 1rem; }
+    li { margin: 0.5rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Notes</h1>
+  <form id="new">
+    <input id="text" maxlength="500" placeholder="Write a note" required>
+    <button>Add</button>
+  </form>
+  <ul id="notes"></ul>
+  <script>
+    const API = "${api_url}";
+
+    async function load() {
+      const notes = await (await fetch(API + "/notes")).json();
+      const list = document.getElementById("notes");
+      list.replaceChildren();
+      for (const note of notes) {
+        const item = document.createElement("li");
+        item.textContent = note.text; // textContent, never innerHTML: a note can't inject code
+        list.append(item);
+      }
+    }
+
+    document.getElementById("new").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const input = document.getElementById("text");
+      await fetch(API + "/notes", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ text: input.value }),
+      });
+      input.value = "";
+      load();
+    });
+
+    load();
+  </script>
+</body>
+</html>

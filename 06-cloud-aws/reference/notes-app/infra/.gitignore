@@ -1,0 +1,6 @@
+# Never commit state: it can contain secrets and your account's inventory
+*.tfstate
+*.tfstate.*
+.terraform/
+build/
+*.tfvars
