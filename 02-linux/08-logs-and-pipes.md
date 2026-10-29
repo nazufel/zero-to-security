@@ -14,7 +14,7 @@ Any internet-facing SSH server gets password-guessing attempts within minutes of
    ssh hacker@192.168.64.5
    ```
 
-   (Windows: `ssh -p 2222 hacker@127.0.0.1`.) Press `Ctrl+C` after the third `Permission denied`.
+   (Use your VM's address.) Press `Ctrl+C` after the third `Permission denied`.
 
 2. **In the VM**, ask the system journal what the SSH service saw:
 
@@ -29,7 +29,7 @@ Any internet-facing SSH server gets password-guessing attempts within minutes of
    Failed password for invalid user hacker from 192.168.64.1 port 51234 ssh2
    ```
 
-   That's you, the attacker, with your IP address. (On VirtualBox, it shows as `10.0.2.2`, the address of the port forward.) The **journal** is where Ubuntu's services write their logs, and `journalctl` reads it.
+   That's you, the attacker, with your IP address. (On VirtualBox, it's your laptop's host-only address, `192.168.56.1`.) The **journal** is where Ubuntu's services write their logs, and `journalctl` reads it.
 
 3. The same events in the classic log file. Check it exists:
 

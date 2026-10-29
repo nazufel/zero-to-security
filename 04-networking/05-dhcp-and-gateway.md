@@ -83,7 +83,7 @@ ping -c 2 1.1.1.1
 ping: connect: Network is unreachable
 ```
 
-The internet is gone. But your SSH session is still working. Why? Your laptop is on the **local** subnet (or, on VirtualBox, is the gateway itself), so that traffic never needed the gateway. "Local things work, the internet doesn't" points straight at the gateway. That's the kind of clue that turns a vague ticket into a two-minute fix.
+The internet is gone. But your SSH session is still working. Why? Your laptop is on the VM's **local** subnet, so that traffic never needed the gateway. "Local things work, the internet doesn't" points straight at the gateway. That's the kind of clue that turns a vague ticket into a two-minute fix.
 
 Put it back by re-applying the network configuration:
 

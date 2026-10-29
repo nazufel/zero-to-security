@@ -49,7 +49,7 @@ Attackers scan the whole internet, constantly, looking for open ports. A new ser
    nmap 192.168.64.5
    ```
 
-   **Windows:** install nmap from [nmap.org/download](https://nmap.org/download.html) (free), and scan your forwarded ports: `nmap -p 2222,8080 127.0.0.1`.
+   **Windows:** install nmap from [nmap.org/download](https://nmap.org/download.html) (free), and run the same scan against your VM's address from PowerShell.
 
    You should see SSH open, and everything else not reachable. That's your [firewall](08-firewalls.md) from the outside.
 
@@ -84,7 +84,7 @@ PORT     STATE SERVICE
 
 nmap calls it `krb524`, a Kerberos service. It isn't. It's your `nc`. Without `-sV`, the **SERVICE** column is just nmap's guess from the port number. Port 4444 is also a common default for attacker backdoors. A real port you don't recognize means: find the process with `sudo ss -tlnp`, then decide.
 
-Now from your **laptop** (Mac): `nmap -p 4444 192.168.64.5`.
+Now from your **laptop**: `nmap -p 4444 192.168.64.5` (your VM's address).
 
 ```
 PORT     STATE    SERVICE

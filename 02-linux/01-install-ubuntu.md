@@ -35,8 +35,10 @@ Give it **2 CPUs**, **4 GB of memory** (2 GB if your laptop only has 8 GB), and 
 1. **New.** Name it `lab`, pick the ISO you downloaded.
 2. Turn **unattended installation off**. The wording of the checkbox varies by version. You want to see the installer yourself.
 3. Set memory, CPUs, and disk as above, and finish.
-4. Before you start it: **Settings → Network → Adapter 1 → Port Forwarding** (switch Settings to Expert mode if you don't see it). Add one rule: protocol `TCP`, host IP `127.0.0.1`, host port `2222`, guest port `22`. This lets your laptop reach the VM over SSH.
+4. Before you start it, give the VM a second network connection that only your laptop can reach: **Settings → Network → Adapter 2 → Enable Network Adapter**, attached to **Host-only Adapter**, name **VirtualBox Host-Only Ethernet Adapter**. (Switch Settings to Expert mode if you don't see it. If there's no host-only adapter to pick, create one under **File → Tools → Network Manager**.) Adapter 1 stays on **NAT**, for internet access.
 5. Start it.
+
+> **Why host-only, not bridged?** Bridged networking puts your VM directly on whatever network your laptop is on, including coffee shop Wi-Fi, where anyone nearby could try to log in to it. Host-only means only your laptop can reach the VM. That's the same setup UTM uses on a Mac, so from here on, Mac and Windows steps are the same.
 
 > **Low on RAM?** WSL2 on Windows runs Ubuntu without a full VM. It works for most of this module, but snapshots and some service steps differ. Use it only if a VM won't run.
 
@@ -65,30 +67,38 @@ sudo apt update && sudo apt upgrade -y
 
 The VM window is clumsy: no copy and paste, tiny text. From now on you'll work from your laptop's terminal over **SSH** (Secure Shell), an encrypted remote login.
 
-**Mac:** find the VM's address. In the VM:
+Find the VM's address. In the VM:
 
 ```bash
 ip -brief address
 ```
 
-What you should see (your numbers will differ):
+What you should see on UTM (your numbers will differ):
 
 ```
 lo               UNKNOWN        127.0.0.1/8 ::1/128
 enp0s1           UP             192.168.64.5/24 fdxx::xxxx/64
 ```
 
-The address that starts with `192.168` is your VM. On your Mac:
+On VirtualBox you'll see two connections: one with a `10.0.2.15` address (the NAT side, for the internet) and one starting with `192.168.56` (the host-only side). Use the `192.168` address. On your laptop (Terminal on Mac, Git Bash on Windows):
 
 ```bash
 ssh yourusername@192.168.64.5
 ```
 
-**Windows (Git Bash):** use the port forward you set up:
+> **Your address, everywhere.** This course's examples use `192.168.64.5`. On VirtualBox, yours will look like `192.168.56.101`. Whenever you see `192.168.64.5` or `192.168.64.0/24`, use your own address or subnet.
 
-```bash
-ssh -p 2222 yourusername@127.0.0.1
-```
+> **No `192.168.56` address on VirtualBox?** The installer didn't set up the second connection. Find its name in `ip -brief address` (often `enp0s8`), then create `/etc/netplan/60-host-only.yaml` with `sudo nano`, containing:
+>
+> ```yaml
+> network:
+>   version: 2
+>   ethernets:
+>     enp0s8:
+>       dhcp4: true
+> ```
+>
+> Then run `sudo chmod 600 /etc/netplan/60-host-only.yaml` and `sudo netplan apply`.
 
 The first time, SSH asks if you trust this host. Type `yes`. Then enter your VM password. Your prompt changes to `yourusername@lab:~$`. You're in.
 

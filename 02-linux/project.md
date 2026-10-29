@@ -67,7 +67,7 @@ You know almost everything already. Here's what's new:
    ssh -o PubkeyAuthentication=no newadmin@192.168.64.5  # Permission denied (publickey)
    ```
 
-   (Windows: `-p 2222 newadmin@127.0.0.1`.) Then, in the VM:
+   (Use your VM's address.) Then, in the VM:
 
    ```bash
    sudo sshd -T | grep -iE "passwordauthentication|permitrootlogin"

@@ -40,7 +40,7 @@ In the last lesson you guessed passwords against your own server, and the logs s
    **Windows (Git Bash):**
 
    ```bash
-   cat ~/.ssh/id_ed25519.pub | ssh -p 2222 yourusername@127.0.0.1 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+   cat ~/.ssh/id_ed25519.pub | ssh yourusername@192.168.64.5 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
    ```
 
    Type your VM password one last time. Your public key is now in `~/.ssh/authorized_keys` on the VM: the list of keys allowed to log in as you.
@@ -53,7 +53,7 @@ In the last lesson you guessed passwords against your own server, and the logs s
        User yourusername
    ```
 
-   On Windows, use `HostName 127.0.0.1` and add a line `    Port 2222`.
+   Use your VM's address for `HostName`.
 
    ```bash
    ssh lab

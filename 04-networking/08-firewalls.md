@@ -56,7 +56,7 @@ The rule of thumb is **default deny**: block everything, then allow only what yo
    cd ~/web && python3 -m http.server 8080
    ```
 
-   **From your laptop** (Mac):
+   **From your laptop**, using your VM's address:
 
    ```bash
    curl --max-time 5 http://192.168.64.5:8080/
@@ -66,7 +66,7 @@ The rule of thumb is **default deny**: block everything, then allow only what yo
    curl: (28) Connection timed out after 5002 milliseconds
    ```
 
-   A **timeout**, not "connection refused." The firewall silently dropped your packets, exactly like the mystery timeout in [lesson 3](03-tcp-udp-ports.md). (On Windows with VirtualBox, first add a port forward for host port 8080 to guest port 8080, the same way you did for SSH in [Module 2](../02-linux/01-install-ubuntu.md), then use `http://127.0.0.1:8080/`.)
+   A **timeout**, not "connection refused." The firewall silently dropped your packets, exactly like the mystery timeout in [lesson 3](03-tcp-udp-ports.md).
 
 5. Allow it, but **only from your own network**, not the whole internet:
 
@@ -74,7 +74,7 @@ The rule of thumb is **default deny**: block everything, then allow only what yo
    sudo ufw allow from 192.168.64.0/24 to any port 8080 proto tcp
    ```
 
-   (On VirtualBox, the port-forwarded traffic comes from `10.0.2.2`, so use `from 10.0.2.2`.) Try `curl` from your laptop again. It works. That rule reads exactly like an AWS security group rule: **source** CIDR, **port**, **protocol**.
+   (On VirtualBox, your subnet is `192.168.56.0/24`.) Try `curl` from your laptop again. It works. That rule reads exactly like an AWS security group rule: **source** CIDR, **port**, **protocol**.
 
 6. List rules with numbers, and remove the one you just added:
 

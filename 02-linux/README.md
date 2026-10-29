@@ -11,7 +11,7 @@ We keep it lean: only what you'll actually use.
 ## Opinions
 
 - **Ubuntu Server LTS, no desktop.** It forces command-line comfort and runs on 4 GB of RAM.
-- **Mac:** [UTM](https://mac.getutm.app/) (free). **Windows:** [VirtualBox](https://www.virtualbox.org/) (free, works on Windows Home). **Low on RAM?** WSL2 is the fallback.
+- **Mac:** [UTM](https://mac.getutm.app/) (free). **Windows:** [VirtualBox](https://www.virtualbox.org/) (free, works on Windows Home), with a host-only network so only your laptop can reach the VM. **Low on RAM?** WSL2 is the fallback.
 - **The VM is also AI's first box.** Claude Code runs inside it, not on your laptop.
 
 ## You're ready to move on when…
