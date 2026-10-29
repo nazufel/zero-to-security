@@ -117,6 +117,7 @@ Plain-language definitions. Terms are added as lessons are written. Missing one?
 | **SQS** | AWS's message queue | 6 |
 | **SSH** | Secure Shell: an encrypted way to log in to a remote machine | 2 |
 | **Standard library** | The modules that come with Python, like `json` and `ipaddress`. Nothing extra to install or trust. | 3 |
+| **STAR** | A shape for interview stories: Situation, Task, Action, Result | 10 |
 | **State (OpenTofu)** | OpenTofu's record of what it manages. Can contain secrets. Never commit it. | 6 |
 | **STRIDE** | A threat-modeling checklist: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege | 8 |
 | **Subagent** | A helper AI agent with its own instructions and a limited set of tools, for one job | 1, 9 |

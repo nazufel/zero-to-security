@@ -4,7 +4,7 @@
 
 ## The recommendation, and the alternative
 
-**Recommended:** Claude Pro (about $20/month), started at Module 3. Every "With Claude" section in this course is written for Claude Code, which needs a paid Claude plan. The free Claude plan at [claude.ai](https://claude.ai) is enough for Modules 0–2.
+**Recommended:** Claude Pro (about $20/month), started at Module 3. Every "With Claude" section in this course is written for Claude Code, which needs a paid Claude plan. The free Claude plan at [claude.ai](https://claude.ai) is enough for Modules 0 and 1, and for Module 2 up to its last lesson, which installs Claude Code.
 
 **Free alternative:** [OpenCode](https://opencode.ai/), a free, open-source coding agent for the terminal. It works with many AI providers, including a built-in gateway called **Zen** that offers some models for free.
 

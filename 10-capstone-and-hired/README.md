@@ -2,8 +2,6 @@
 
 **Pillars:** ☁️ Cloud · 🪪 Identity · 🤖 AI
 
-> 🚧 **Outline.** Lessons are being written. The checklist and plan below are final.
-
 ## Why this module matters
 
 Skills don't get you hired. *Proof* of skills, explained clearly, gets you hired. This module turns everything you've built into a portfolio, a resume, and a story you can tell in an interview.
@@ -18,16 +16,21 @@ Skills don't get you hired. *Proof* of skills, explained clearly, gets you hired
 - [ ] You can explain how you use AI at work, and how you keep it safe
 - [ ] You can talk about any Dig Deeper topic honestly: what you did, not what you claim
 
-## Lessons (planned)
+## Lessons
 
-1. **The capstone:** polish your portfolio so it proves all three pillars
-2. **Resume for zero experience:** turning projects into bullets
-3. **Your pitch:** *"I can build in AWS, design who gets access to what, and use AI to work faster without making it a security hole."* Make it yours.
-4. **Interview prep:** the [mock interviews](../appendix/mock-interviews.md), and practicing with Claude as the interviewer
-5. **"Aren't you worried AI will replace you?"** Your answer is the reason this course exists
-6. **Certifications:** none are required, none are free. When Security+ or AWS Cloud Practitioner is worth paying for.
-7. **Listing Dig Deeper work honestly:** "hands-on lab experience with Kubernetes (kind)," not "Kubernetes expert"
-8. **Keep practicing:** free labs and CTFs while you job-hunt
+1. [The capstone](01-the-capstone.md): polish your portfolio so it proves all three pillars in 60 seconds
+2. [A resume with zero experience](02-resume.md): turning projects into bullets
+3. [Your pitch](03-your-pitch.md): *"I can build in AWS, design who gets access to what, and use AI to work faster without making it a security hole."* Make it yours.
+4. [Interview prep](04-interview-prep.md): the [mock interviews](../appendix/mock-interviews.md), and practicing with Claude as the interviewer
+5. ["Aren't you worried AI will replace you?"](05-will-ai-replace-you.md) Your answer is the reason this course exists
+6. [Certifications](06-certifications.md): none are required, none are free. When Security+ or AWS Cloud Practitioner is worth paying for.
+7. [Listing Dig Deeper work honestly](07-listing-dig-deeper-honestly.md): "hands-on lab experience with Kubernetes (kind)," not "Kubernetes expert"
+8. [Keep practicing](08-keep-practicing.md): free labs and CTFs while you job-hunt
+
+## Practice
+
+- [Quiz](quiz.md): out loud, timed
+- [Project: ready to apply](project.md): the final checklist, ending with your first five applications
 
 ## What your portfolio proves
 
